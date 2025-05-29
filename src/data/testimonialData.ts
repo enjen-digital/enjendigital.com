@@ -15,7 +15,7 @@ export const testimonials: Testimonial[] = [
     role: 'COO',
     company: 'Inspire Barber & Beauty',
     content: 'As a traditional barbershop, we were hesitant to adopt new technology. EnJen made the transition smooth and our clients love being able to book their favorite barber without calling. The digital marketing package has been a game-changer for us.',
-    image: '/detroit.png'
+    image: '/Brian Britt.png'
   },
   {
     id: 3,
