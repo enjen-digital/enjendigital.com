@@ -11,9 +11,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: 'Cainan Davenport',
+    name: 'Brian Britt',
     role: 'COO',
-    company: 'Taperz Barber Shop',
+    company: 'Inspire Barber & Beauty',
     content: 'As a traditional barbershop, we were hesitant to adopt new technology. EnJen made the transition smooth and our clients love being able to book their favorite barber without calling. The digital marketing package has been a game-changer for us.',
     image: '/detroit.png'
   },
