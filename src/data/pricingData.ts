@@ -44,7 +44,7 @@ export const pricingTiers = [
       'Multi-Staff Support',
       'Team Scheduling',
       'Personal Web Designer',
-      'Advanced Reporting',
+      'Customer Marketing',
       'Priority Support',
       'Team Management Tools',
       'Multiple Service Locations'
