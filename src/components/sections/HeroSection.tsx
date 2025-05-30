@@ -19,8 +19,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight" aria-label="Grow Your Beauty Business with Seamless Booking">
               Grow Your Beauty Business with Seamless Booking
             </h1>
-            <p className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 max-w-lg">
+            <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-lg leading-relaxed">
               All-in-one booking system with integrated website designed specifically for salons, spas, and barber shops.
+              <span className="block mt-2 text-primary-600 font-medium">Join 40+ successful businesses today.</span>
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">

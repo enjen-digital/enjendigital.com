@@ -17,9 +17,9 @@ const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
-      <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-md p-6 mx-4">
+      <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-md p-8 mx-4 border border-gray-100">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
@@ -30,8 +30,9 @@ const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
         <h2 className="text-2xl font-bold text-gray-900 mb-4">
           Schedule Your Free Demo
         </h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-600 mb-8 leading-relaxed">
           See how Enjen can transform your business with a personalized walkthrough.
+          <span className="block mt-2 text-sm text-primary-600">No credit card required • 30-day free trial</span>
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">

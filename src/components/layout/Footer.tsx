@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
             <a href="#" className="flex items-center mb-6">
-              <img src="/enjen-logo-black.png" alt="EnJen Digital Logo" className="h-10 w-auto" />
+              <img src="/enjen-logo-white.png" alt="EnJen Digital Logo" className="h-10 w-auto" />
             </a>
             <p className="text-gray-400 mb-6 max-w-md text-sm">
               Transforming businesses through innovative digital solutions and strategic marketing expertise.
@@ -108,8 +108,13 @@ const Footer: React.FC = () => {
         
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-xs mb-4 md:mb-0">
-            © {currentYear} Digital Marketing. All rights reserved.
+            © {currentYear} EnJen Digital. All rights reserved.
           </p>
+          <div className="flex space-x-6 text-xs text-gray-400">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+          </div>
         </div>
       </div>
     </footer>
