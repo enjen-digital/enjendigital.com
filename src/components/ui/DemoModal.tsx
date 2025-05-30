@@ -11,10 +11,9 @@ const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically handle the form submission
-    // For now, we'll just close the modal
-    onClose();
+    e.preventDefault(); 
+    // Form submission logic will be implemented later
+    onClose(); 
   };
 
   return (

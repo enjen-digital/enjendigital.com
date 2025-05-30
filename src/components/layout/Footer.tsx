@@ -69,8 +69,6 @@ const Footer: React.FC = () => {
             </p>
             <form className="space-y-3" onSubmit={(e) => {
               e.preventDefault();
-              // Here you would typically handle the newsletter subscription
-              // For now, we'll just reset the form
               (e.target as HTMLFormElement).reset();
             }}>
               <input

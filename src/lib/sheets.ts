@@ -6,7 +6,7 @@ interface Lead {
   businessSize: string;
 }
 
-const SHEET_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+const SHEET_URL = import.meta.env.VITE_GOOGLE_SHEETS_URL;
 
 export async function saveToSheet(data: Lead) {
   try {

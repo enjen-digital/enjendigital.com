@@ -1,30 +1,20 @@
-// Core imports
 import Button from '../ui/Button';
 import { ArrowRight } from 'lucide-react';
 
-// Props interface
 interface HeroSectionProps {
   onDemoClick: () => void;
 }
 
-/**
- * Hero section component
- * Displays the main landing section with call-to-action buttons
- * and social proof elements
- */
 const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
   return (
     <section className="pt-32 pb-20 relative overflow-hidden bg-gradient-to-br from-white to-primary-50">
-      {/* Background gradient overlay */}
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-primary-200 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-primary-200 to-transparent"></div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Main content grid */}
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          {/* Left column - Text content */}
           <div className="w-full lg:w-1/2 animate-fade-in">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight" aria-label="Grow Your Beauty Business with Seamless Booking">
               Grow Your Beauty Business with Seamless Booking
