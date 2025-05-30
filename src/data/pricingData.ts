@@ -28,6 +28,7 @@ export const pricingTiers = [
       'Client Management',
       'Automated Reminders',
       'Mobile App Access',
+      'Custom Domain',
       'Sales Analytics',
       'Email Support'
     ],
