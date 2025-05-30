@@ -42,7 +42,7 @@ export const pricingTiers = [
       'Everything in Single Seat',
       'Multi-Staff Support',
       'Team Scheduling',
-      'Staff Performance Analytics',
+      'Personal Web Designer',
       'Advanced Reporting',
       'Priority Support',
       'Team Management Tools',
