@@ -19,7 +19,7 @@ interface AddOn {
 export const pricingTiers = [
   {
     id: 1,
-    name: 'Standard',
+    name: 'Single Seat',
     price: 49,
     description: 'Perfect for independent professionals and small operations',
     features: [
@@ -36,21 +36,38 @@ export const pricingTiers = [
   },
   {
     id: 2,
-    name: 'Premium',
+    name: 'Shop',
     price: 99,
     description: 'Ideal for salons and spas with multiple staff members',
     features: [
-      'Everything in Standard',
+      'Everything in Single Seat',
       'Multi-Staff Support',
       'Team Scheduling',
       'Personal Web Designer',
       'Customer Marketing',
       'Priority Support',
       'Team Management Tools',
-      'Multiple Service Locations'
+      'Advanced Analytics'
     ],
     highlighted: true,
     url: 'https://buy.stripe.com/premium'
+  },
+  {
+    id: 3,
+    name: 'Enterprise',
+    price: 199,
+    description: 'Perfect for businesses with multiple locations',
+    features: [
+      'Everything in Shop',
+      'Multiple Locations',
+      'Cross-Location Booking',
+      'Enterprise Analytics',
+      'Dedicated Account Manager',
+      'Custom Integration Support',
+      'Staff Training Program',
+      'Priority Phone Support'
+    ],
+    url: 'https://buy.stripe.com/enterprise'
   }
 ];
 
