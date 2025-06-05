@@ -19,7 +19,7 @@ interface AddOn {
 export const pricingTiers = [
   {
     id: 1,
-    name: 'Single Seat',
+    name: 'Single Seat Package',
     price: 49,
     description: 'Perfect for independent professionals and small operations',
     features: [
@@ -36,11 +36,11 @@ export const pricingTiers = [
   },
   {
     id: 2,
-    name: 'Shop',
+    name: 'Shop Package',
     price: 99,
     description: 'Ideal for salons and spas with multiple staff members',
     features: [
-      'Everything in Single Seat',
+      'Everything in Single Seat Package',
       'Multi-Staff Support',
       'Team Scheduling',
       'Personal Web Designer',
@@ -54,11 +54,11 @@ export const pricingTiers = [
   },
   {
     id: 3,
-    name: 'Enterprise',
+    name: 'Enterprise Package',
     price: 199,
     description: 'Perfect for businesses with multiple locations',
     features: [
-      'Everything in Shop',
+      'Everything in Shop Package',
       'Multiple Locations',
       'Cross-Location Booking',
       'Enterprise Analytics',
