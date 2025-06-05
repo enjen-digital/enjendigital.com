@@ -78,6 +78,19 @@ section.animate-fade-in {
   }
 }
 
+@keyframes timer {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-timer {
+  animation: timer 5s linear;
+}
+
 .feature-highlight {
   animation: glow 4s infinite ease-in-out;
   font-weight: 600;

@@ -26,12 +26,6 @@ const HomePage = () => {
       icon: ShoppingCart,
       description: 'Custom e-commerce solutions',
       image: '/customers.png'
-    },
-    {
-      title: 'Analytics',
-      icon: BarChart,
-      description: 'Data-driven insights',
-      image: '/Screenshot Analytics.png'
     }
   ];
 
@@ -58,13 +52,13 @@ const HomePage = () => {
                 EnJen Digital delivers enterprise-grade software solutions and digital marketing services to drive business transformation.
               </p>
               
-              <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="flex gap-4 mb-8">
                 {industries.map((industry, index) => {
                   const Icon = industry.icon;
                   return (
                     <div
                       key={index}
-                      className={`relative p-4 rounded-lg cursor-pointer transition-all duration-300 ${
+                      className={`relative p-3 rounded-lg cursor-pointer transition-all duration-300 w-1/3 ${
                         activeCard === index
                           ? 'bg-white text-gray-900'
                           : 'bg-gray-800 text-white hover:bg-gray-700'
