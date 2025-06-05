@@ -49,7 +49,7 @@ const HomePage = () => {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                Software Development & Digital Transformation
+                Website Development & Digital Transformation
               </h1>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl">
                 EnJen Digital delivers enterprise-grade software solutions and digital marketing services to drive business transformation.
