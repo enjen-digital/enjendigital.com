@@ -2,10 +2,7 @@ import { useEffect } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Hero from '../components/marketing/Hero';
 import Services from '../components/marketing/Services';
-import Portfolio from '../components/marketing/Portfolio';
-import Process from '../components/marketing/Process';
-import Contact from '../components/marketing/Contact';
-import Footer from '../components/marketing/Footer';
+import Footer from '../components/layout/Footer';
 
 const MarketingPage = () => {
   useEffect(() => {
@@ -31,9 +28,6 @@ const MarketingPage = () => {
       <main>
         <Hero />
         <Services />
-        <Portfolio />
-        <Process />
-        <Contact />
       </main>
       <Footer />
     </div>
