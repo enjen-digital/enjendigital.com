@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Navbar from '../components/marketing/Navbar';
+import Navbar from '../components/layout/Navbar';
 import Hero from '../components/marketing/Hero';
 import Services from '../components/marketing/Services';
 import Portfolio from '../components/marketing/Portfolio';
