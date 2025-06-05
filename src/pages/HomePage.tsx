@@ -71,18 +71,15 @@ const HomePage = () => {
                       </div>
                       <p className="text-sm opacity-80">{industry.description}</p>
                       {activeCard === index && (
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary-500">
-                          <div
-                            className="h-full bg-primary-300 animate-timer"
-                          />
+                        <div 
+                          className="absolute bottom-0 left-0 right-0 h-1 animate-timer"
+                          style={{ backgroundColor: 'currentColor', opacity: 0.3 }}
+                        />
                         </div>
                       )}
                     </div>
                   );
                 })}
-              </div>
-              
-              <div className="flex flex-wrap gap-4">
               </div>
             </div>
             
