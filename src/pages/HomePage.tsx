@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap } from 'lucide-react';
+import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap, Check } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
