@@ -64,7 +64,7 @@ const MarketingPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
-      <Navbar onDemoClick={() => {}} />
+      <Navbar />
       
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -129,7 +129,7 @@ const MarketingPage = () => {
                     variant={plan.popular ? 'primary' : 'outline'}
                     size="lg"
                     fullWidth
-                    onClick={() => window.location.href = '#contact'}
+                    onClick={() => window.location.href = '/contact'}
                   >
                     Get Started
                   </Button>
