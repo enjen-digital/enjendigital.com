@@ -88,12 +88,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
           
           <div className="w-full lg:w-1/2 animate-slide-in-right px-4 sm:px-0">
             <div className="relative">
-              <div className="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+              <div className="bg-white rounded-xl shadow-2xl overflow-hidden group">
                 <img
                   src="/booking slide.png"
                   alt="Booking System Interface"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 group-hover:translate-y-[-25%]"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-lg font-semibold mb-2">Smart Booking System</h3>
+                    <p className="text-sm opacity-90">Streamline your appointments with our intuitive booking interface</p>
+                  </div>
+                </div>
               </div>
               
               <div className="absolute -bottom-12 sm:-bottom-16 left-0 bg-white rounded-lg shadow-lg p-3 sm:p-4 w-36 sm:w-48 transform sm:-translate-x-6">
