@@ -77,7 +77,18 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
           </nav>
           
           <div className="hidden md:flex items-center">
-            {onDemoClick && location.pathname !== '/marketing' && <Button onClick={onDemoClick}>Request Demo</Button>}
+            <div className="flex gap-4">
+              <Button
+                variant="outline"
+                onClick={() => window.location.href = '/contact'}
+                className={location.pathname === '/marketing' ? 'text-white border-white hover:bg-white hover:text-gray-900' : ''}
+              >
+                Contact Us
+              </Button>
+              {onDemoClick && location.pathname !== '/marketing' && (
+                <Button onClick={onDemoClick}>Request Demo</Button>
+              )}
+            </div>
           </div>
           
           <button 
@@ -110,6 +121,14 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
               </a>
             ))}
             <div className="flex flex-col space-y-3 pt-2">
+              <Button
+                variant="outline"
+                fullWidth
+                onClick={() => window.location.href = '/contact'}
+                className={location.pathname === '/marketing' ? 'text-white border-white hover:bg-white hover:text-gray-900' : ''}
+              >
+                Contact Us
+              </Button>
               {onDemoClick && location.pathname !== '/marketing' && <Button fullWidth onClick={onDemoClick}>Request Demo</Button>}
             </div>
           </nav>
