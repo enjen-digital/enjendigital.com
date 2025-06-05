@@ -13,21 +13,21 @@ const HomePage = () => {
       title: 'Booking System',
       icon: Users,
       description: 'Enterprise booking platform with SEO optimization',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
+      image: '/booking slide.png',
       path: '/booking'
     },
     {
       title: 'Web Design',
       icon: LineChart,
       description: 'Custom website development with SEO package',
-      image: 'https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg',
+      image: '/Screenshot Analytic.png',
       path: '/marketing'
     },
     {
       title: 'E-Commerce',
       icon: ShoppingCart,
       description: 'Custom e-commerce solutions with SEO integration',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg',
+      image: '/team members.png',
       path: '/e-commerce'
     }
   ];
