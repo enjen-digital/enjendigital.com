@@ -9,8 +9,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
   return (
     <section className="pt-32 pb-20 relative overflow-hidden bg-gradient-to-br from-white to-primary-50">
       <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-primary-200 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-primary-200 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-200 to-transparent opacity-50"></div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -89,11 +88,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
           
           <div className="w-full lg:w-1/2 animate-slide-in-right px-4 sm:px-0">
             <div className="relative">
-              <div className="bg-white rounded-xl shadow-xl overflow-hidden">
+              <div className="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
                 <img
-                  src="/Screenshot Analytics.png"
-                  alt="Analytics dashboard"
-                  className="w-full h-full object-cover"
+                  src="/booking slide.png"
+                  alt="Booking System Interface"
+                  className="w-full h-full object-contain"
                 />
               </div>
               
