@@ -2,10 +2,43 @@ import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import Button from '../components/ui/Button';
-import { Check, ArrowRight, BarChart, Globe, Users, TrendingUp } from 'lucide-react';
+import { Check, ArrowRight, BarChart, Globe, Users, TrendingUp, Search, Share2, Mail, LineChart, Target, Megaphone } from 'lucide-react';
 
 const MarketingPage = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+  
+  const services = [
+    {
+      icon: Search,
+      title: 'Search Engine Optimization',
+      description: 'Improve your visibility and drive organic traffic with our data-driven SEO strategies.'
+    },
+    {
+      icon: Share2,
+      title: 'Social Media Marketing',
+      description: 'Engage your audience and build brand awareness across all major social platforms.'
+    },
+    {
+      icon: Mail,
+      title: 'Email Marketing',
+      description: 'Convert leads and retain customers with targeted email campaigns and automation.'
+    },
+    {
+      icon: LineChart,
+      title: 'PPC Advertising',
+      description: 'Maximize ROI with carefully managed paid advertising campaigns on Google and social media.'
+    },
+    {
+      icon: Target,
+      title: 'Content Marketing',
+      description: 'Create valuable content that attracts and retains your target audience.'
+    },
+    {
+      icon: Megaphone,
+      title: 'Brand Strategy',
+      description: 'Develop a strong brand identity and messaging that resonates with your audience.'
+    }
+  ];
   
   const stats = [
     { icon: BarChart, value: '250%', label: 'Average ROI' },
@@ -148,6 +181,36 @@ const MarketingPage = () => {
                   );
                 })}
               </div>
+            </div>
+          </div>
+
+          {/* Services Section */}
+          <div id="services" className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
+              Our Digital Marketing Services
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto text-center mb-12">
+              Comprehensive digital marketing solutions tailored to your business goals
+            </p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <div 
+                    key={index} 
+                    className="bg-gray-800 border border-gray-700 p-8 rounded-xl hover:border-primary-500 transition-colors"
+                  >
+                    <Icon className="w-10 h-10 text-primary-500 mb-4" />
+                    <h3 className="text-xl font-semibold text-white mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-300">
+                      {service.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
