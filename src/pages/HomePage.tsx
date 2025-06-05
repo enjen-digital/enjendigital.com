@@ -1,152 +1,199 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart, Globe, Users, Shield } from 'lucide-react';
+import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap } from 'lucide-react';
 import Button from '../components/ui/Button';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-gray-900 via-primary-900 to-gray-900">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        <div className="container mx-auto px-4 pt-40 pb-24 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              #1 Software Solutions for Business Growth
+      <div className="bg-gradient-to-r from-gray-900 to-primary-900 pt-32 pb-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              Software Development & Digital Transformation
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              EnJen Digital delivers enterprise-grade software solutions that drive innovation and accelerate business transformation.
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+              EnJen Digital delivers enterprise-grade software solutions and digital marketing services to drive business transformation.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="group">
-                Start Free Trial
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            <div className="flex flex-wrap gap-4">
+              <Button size="lg">
+                Get a Quote
               </Button>
               <Button 
                 variant="outline" 
-                size="lg" 
+                size="lg"
                 className="text-white border-white hover:bg-white hover:text-gray-900"
               >
-                Watch Demo
+                Our Services
               </Button>
-            </div>
-          </div>
-        </div>
-        
-        {/* Stats Bar */}
-        <div className="bg-white/10 backdrop-blur-sm border-t border-white/20">
-          <div className="container mx-auto px-4 py-6">
-            <div className="grid md:grid-cols-4 gap-8 md:gap-4">
-              {[
-                { icon: Shield, value: '99.99%', label: 'Enterprise Security' },
-                { icon: Users, value: '100K+', label: 'Active Users' },
-                { icon: BarChart, value: '2.5x', label: 'Growth Rate' },
-                { icon: Globe, value: '24/7', label: 'Global Support' }
-              ].map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <div key={index} className="flex items-center justify-center text-white">
-                    <Icon className="w-6 h-6 mr-3 text-primary-400" />
-                    <div>
-                      <div className="text-2xl font-bold">{stat.value}</div>
-                      <div className="text-sm text-gray-300">{stat.label}</div>
-                    </div>
-                  </div>
-                );
-              })}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Solutions Section */}
-      <div className="py-24 bg-white">
+      {/* Services Grid */}
+      <div className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Enterprise Solutions
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover how our platforms can transform your business operations and drive growth
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8">
             <Link 
               to="/booking" 
-              className="group bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-primary-100 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white p-8 border-l-4 border-primary-600 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className="p-8">
-                <div className="bg-primary-50 rounded-lg p-3 w-fit mb-6">
-                  <img
-                    src="/booking-icon.svg"
-                    alt="Booking System"
-                    className="w-8 h-8"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Enterprise Booking Platform
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  Transform your service-based business with our comprehensive booking and management solution. Built for enterprise scalability and performance.
-                </p>
-                <div className="flex items-center text-primary-600 group-hover:text-primary-700">
-                  <span className="font-medium">Learn More</span>
-                  <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
-                </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Enterprise Booking Platform
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Transform your service-based business with our comprehensive booking and management solution.
+              </p>
+              <ul className="space-y-3 mb-6">
+                {[
+                  'Online Booking System',
+                  'Staff Management',
+                  'Analytics Dashboard',
+                  'Client Communication'
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-center text-gray-700">
+                    <Check className="w-5 h-5 text-primary-600 mr-2" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex items-center text-primary-600">
+                <span className="font-medium">Learn More</span>
+                <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
               </div>
             </Link>
 
             <Link 
               to="/marketing" 
-              className="group bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-primary-100 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white p-8 border-l-4 border-primary-600 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className="p-8">
-                <div className="bg-primary-50 rounded-lg p-3 w-fit mb-6">
-                  <img
-                    src="/marketing-icon.svg"
-                    alt="Marketing Technology"
-                    className="w-8 h-8"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Marketing Technology Suite
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  Enterprise-grade marketing automation and analytics platform. Drive growth with AI-powered insights and automation.
-                </p>
-                <div className="flex items-center text-primary-600 group-hover:text-primary-700">
-                  <span className="font-medium">Learn More</span>
-                  <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
-                </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Digital Marketing Solutions
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Drive growth with our comprehensive digital marketing and analytics platform.
+              </p>
+              <ul className="space-y-3 mb-6">
+                {[
+                  'SEO Optimization',
+                  'Social Media Marketing',
+                  'Content Strategy',
+                  'Performance Analytics'
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-center text-gray-700">
+                    <Check className="w-5 h-5 text-primary-600 mr-2" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex items-center text-primary-600">
+                <span className="font-medium">Learn More</span>
+                <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
               </div>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="bg-gray-900 py-24">
+      {/* Why Choose Us */}
+      <div className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8">
-              Join thousands of businesses that trust EnJen Digital for their enterprise software needs.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg">Schedule Consultation</Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="text-white border-white hover:bg-white hover:text-gray-900"
-              >
-                Contact Sales
-              </Button>
-            </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-12">
+            Why Choose EnJen Digital
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Star,
+                title: 'Industry Expertise',
+                description: '15+ years of experience in software development and digital marketing'
+              },
+              {
+                icon: Shield,
+                title: 'Enterprise Security',
+                description: 'Bank-grade security measures to protect your business data'
+              },
+              {
+                icon: Award,
+                title: 'Proven Results',
+                description: 'Consistently delivering measurable business outcomes'
+              }
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div key={index} className="flex flex-col items-start">
+                  <div className="p-3 bg-primary-50 rounded-lg mb-4">
+                    <Icon className="w-6 h-6 text-primary-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
+
+      {/* Industries */}
+      <div className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12">
+            Industries We Serve
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              'Healthcare',
+              'Professional Services',
+              'Retail & E-commerce',
+              'Manufacturing',
+              'Financial Services',
+              'Education',
+              'Technology',
+              'Hospitality'
+            ].map((industry, index) => (
+              <div 
+                key={index}
+                className="bg-white p-6 border-l-4 border-primary-600 shadow hover:shadow-md transition-shadow"
+              >
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {industry}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="py-16 bg-primary-900">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-white mb-6">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl text-gray-300 mb-8">
+              Let's discuss how we can help you achieve your business goals.
+            </p>
+            <Button 
+              size="lg"
+              className="bg-white text-primary-900 hover:bg-gray-100"
+            >
+              Schedule a Consultation
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 };
