@@ -1,10 +1,47 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap, Check } from 'lucide-react';
+import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap, Check, LineChart, ShoppingCart } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+import { useState, useEffect } from 'react';
 
 const HomePage = () => {
+  const [activeCard, setActiveCard] = useState(0);
+  
+  const industries = [
+    {
+      title: 'Digital Marketing',
+      icon: LineChart,
+      description: 'Strategic digital marketing solutions',
+      image: '/Screenshot Analytic.png'
+    },
+    {
+      title: 'Booking System',
+      icon: Users,
+      description: 'Enterprise booking platform',
+      image: '/team members.png'
+    },
+    {
+      title: 'E-Commerce',
+      icon: ShoppingCart,
+      description: 'Custom e-commerce solutions',
+      image: '/customers.png'
+    },
+    {
+      title: 'Analytics',
+      icon: BarChart,
+      description: 'Data-driven insights',
+      image: '/Screenshot Analytics.png'
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveCard((prev) => (prev + 1) % industries.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -12,24 +49,77 @@ const HomePage = () => {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-gray-900 to-primary-900 pt-32 pb-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Software Development & Digital Transformation
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl">
-              EnJen Digital delivers enterprise-grade software solutions and digital marketing services to drive business transformation.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg">
-                Get a Quote
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="text-white border-white hover:bg-white hover:text-gray-900"
-              >
-                Our Services
-              </Button>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                Software Development & Digital Transformation
+              </h1>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+                EnJen Digital delivers enterprise-grade software solutions and digital marketing services to drive business transformation.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {industries.map((industry, index) => {
+                  const Icon = industry.icon;
+                  return (
+                    <div
+                      key={index}
+                      className={`relative p-4 rounded-lg cursor-pointer transition-all duration-300 ${
+                        activeCard === index
+                          ? 'bg-white text-gray-900'
+                          : 'bg-gray-800 text-white hover:bg-gray-700'
+                      }`}
+                      onClick={() => setActiveCard(index)}
+                    >
+                      <div className="flex items-center mb-2">
+                        <Icon className="w-5 h-5 mr-2" />
+                        <h3 className="font-semibold">{industry.title}</h3>
+                      </div>
+                      <p className="text-sm opacity-80">{industry.description}</p>
+                      {activeCard === index && (
+                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary-500">
+                          <div
+                            className="h-full bg-primary-300 transition-all duration-[5000ms] ease-linear"
+                            style={{ width: '100%' }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              
+              <div className="flex flex-wrap gap-4">
+                <Button size="lg">
+                  Get a Quote
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="text-white border-white hover:bg-white hover:text-gray-900"
+                >
+                  Our Services
+                </Button>
+              </div>
+            </div>
+            
+            <div className="lg:w-1/2">
+              <div className="relative bg-gray-800 rounded-lg overflow-hidden shadow-2xl">
+                {industries.map((industry, index) => (
+                  <div
+                    key={index}
+                    className={`transition-opacity duration-500 ${
+                      activeCard === index ? 'opacity-100' : 'opacity-0 absolute inset-0'
+                    }`}
+                  >
+                    <img
+                      src={industry.image}
+                      alt={industry.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
