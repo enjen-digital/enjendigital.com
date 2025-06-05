@@ -13,7 +13,7 @@ const HomePage = () => {
       title: 'Digital Marketing',
       icon: LineChart,
       description: 'Strategic digital marketing solutions',
-      image: '/Screenshot Analytic.png'
+      image: '/Screenshot Analytics.png'
     },
     {
       title: 'Booking System',
@@ -66,15 +66,14 @@ const HomePage = () => {
                       onClick={() => setActiveCard(index)}
                     >
                       <div className="flex items-center mb-2">
-                        <Icon className="w-5 h-5 mr-2" />
+                        <Icon className="w-5 h-5 mr-2 flex-shrink-0" />
                         <h3 className="font-semibold">{industry.title}</h3>
                       </div>
                       <p className="text-sm opacity-80">{industry.description}</p>
                       {activeCard === index && (
                         <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary-500">
                           <div
-                            className="h-full bg-primary-300 transition-all duration-[5000ms] ease-linear"
-                            style={{ width: '100%' }}
+                            className="h-full bg-primary-300 animate-timer"
                           />
                         </div>
                       )}
@@ -88,12 +87,16 @@ const HomePage = () => {
             </div>
             
             <div className="lg:w-1/2">
-              <div className="relative bg-gray-800 rounded-lg overflow-hidden shadow-2xl">
+              <div className="relative bg-gray-800 rounded-lg overflow-hidden shadow-2xl h-[400px]">
                 {industries.map((industry, index) => (
                   <div
                     key={index}
-                    className={`transition-opacity duration-500 ${
-                      activeCard === index ? 'opacity-100' : 'opacity-0 absolute inset-0'
+                    className={`absolute inset-0 transition-all duration-500 transform ${
+                      activeCard === index 
+                        ? 'opacity-100 translate-x-0' 
+                        : index < activeCard 
+                          ? 'opacity-0 -translate-x-full'
+                          : 'opacity-0 translate-x-full'
                     }`}
                   >
                     <img
