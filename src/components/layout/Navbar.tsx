@@ -3,8 +3,8 @@ import { Scissors } from 'lucide-react';
 import Button from '../ui/Button';
 import { Menu, X } from 'lucide-react';
 
-interface NavbarProps {
-  onDemoClick: () => void;
+interface NavbarProps extends React.HTMLAttributes<HTMLElement> {
+  onDemoClick?: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
@@ -58,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
           </nav>
           
           <div className="hidden md:flex items-center">
-            <Button onClick={onDemoClick}>Request Demo</Button>
+            {onDemoClick && <Button onClick={onDemoClick}>Request Demo</Button>}
           </div>
           
           <button 
@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
               </a>
             ))}
             <div className="flex flex-col space-y-3 pt-2">
-              <Button fullWidth onClick={onDemoClick}>Request Demo</Button>
+              {onDemoClick && <Button fullWidth onClick={onDemoClick}>Request Demo</Button>}
             </div>
           </nav>
         </div>
