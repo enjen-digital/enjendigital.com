@@ -17,9 +17,9 @@ const HomePage = () => {
       path: '/booking'
     },
     {
-      title: 'Digital Marketing',
+      title: 'Web Design',
       icon: LineChart,
-      description: 'Strategic digital marketing solutions',
+      description: 'Custom website development',
       image: 'https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg',
       path: '/marketing'
     },
