@@ -10,22 +10,25 @@ const HomePage = () => {
   
   const industries = [
     {
-      title: 'Digital Marketing',
-      icon: LineChart,
-      description: 'Strategic digital marketing solutions',
-      image: '/Screenshot Analytics.png'
-    },
-    {
       title: 'Booking System',
       icon: Users,
       description: 'Enterprise booking platform',
-      image: '/team members.png'
+      image: '/team members.png',
+      path: '/booking'
+    },
+    {
+      title: 'Digital Marketing',
+      icon: LineChart,
+      description: 'Strategic digital marketing solutions',
+      image: '/Screenshot Analytics.png',
+      path: '/marketing'
     },
     {
       title: 'E-Commerce',
       icon: ShoppingCart,
       description: 'Custom e-commerce solutions',
-      image: '/customers.png'
+      image: '/customers.png',
+      path: '/e-commerce'
     }
   ];
 
@@ -58,12 +61,17 @@ const HomePage = () => {
                   return (
                     <div
                       key={index}
-                      className={`relative p-3 rounded-lg cursor-pointer transition-all duration-300 w-1/3 ${
+                      className={`relative p-3 rounded-lg cursor-pointer transition-all duration-300 w-1/3 hover:bg-opacity-90 ${
                         activeCard === index
                           ? 'bg-white text-gray-900'
                           : 'bg-gray-800 text-white hover:bg-gray-700'
                       }`}
-                      onClick={() => setActiveCard(index)}
+                      onClick={() => {
+                        setActiveCard(index);
+                        setTimeout(() => {
+                          window.location.href = industry.path;
+                        }, 300);
+                      }}
                     >
                       <div className="flex items-center mb-2">
                         <Icon className="w-5 h-5 mr-2 flex-shrink-0" />
