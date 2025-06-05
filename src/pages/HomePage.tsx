@@ -12,21 +12,21 @@ const HomePage = () => {
     {
       title: 'Booking System',
       icon: Users,
-      description: 'Enterprise booking platform',
+      description: 'Enterprise booking platform with SEO optimization',
       image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
       path: '/booking'
     },
     {
       title: 'Web Design',
       icon: LineChart,
-      description: 'Custom website development',
+      description: 'Custom website development with SEO package',
       image: 'https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg',
       path: '/marketing'
     },
     {
       title: 'E-Commerce',
       icon: ShoppingCart,
-      description: 'Custom e-commerce solutions',
+      description: 'Custom e-commerce solutions with SEO integration',
       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg',
       path: '/e-commerce'
     }
@@ -51,8 +51,11 @@ const HomePage = () => {
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 Static Marketing & Digital Transformation
               </h1>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl">
-                EnJen Digital delivers enterprise-grade software solutions and digital marketing services to drive business transformation.
+              <p className="text-xl text-gray-300 mb-4 max-w-2xl">
+                EnJen Digital delivers enterprise-grade software solutions and digital marketing services to drive business transformation. 
+              </p>
+              <p className="text-lg text-primary-300 mb-8">
+                Every solution includes a comprehensive SEO package to maximize your online visibility.
               </p>
               
               <div className="flex gap-4 mb-8">
