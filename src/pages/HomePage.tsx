@@ -46,8 +46,8 @@ const HomePage = () => {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-gray-900 to-primary-900 pt-32 pb-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-8">
-            <div className="lg:w-2/5">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2">
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 Static Marketing & Digital Transformation
               </h1>
@@ -93,7 +93,7 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="lg:w-3/5">
+            <div className="lg:w-1/2">
               <div className="relative bg-gray-800 rounded-lg overflow-hidden shadow-2xl h-[400px]">
                 {industries.map((industry, index) => (
                   <div
