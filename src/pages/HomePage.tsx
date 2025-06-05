@@ -90,16 +90,6 @@ const HomePage = () => {
               </div>
               
               <div className="flex flex-wrap gap-4">
-                <Button size="lg">
-                  Get a Quote
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="text-white border-white hover:bg-white hover:text-gray-900"
-                >
-                  Our Services
-                </Button>
               </div>
             </div>
             
