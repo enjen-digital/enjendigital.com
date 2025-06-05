@@ -173,7 +173,7 @@ const MarketingPage = () => {
                 {stats.map((stat, index) => {
                   const Icon = stat.icon;
                   return (
-                    <div key={index} className="bg-gray-800 border border-gray-700 p-6 rounded-xl">
+                    <div key={index} className="bg-gray-800 border border-gray-700 p-6">
                       <Icon className="w-8 h-8 text-primary-500 mb-4" />
                       <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
                       <div className="text-gray-400">{stat.label}</div>
@@ -199,7 +199,7 @@ const MarketingPage = () => {
                 return (
                   <div 
                     key={index} 
-                    className="bg-gray-800 border border-gray-700 p-8 rounded-xl hover:border-primary-500 transition-colors"
+                    className="bg-gray-800 border border-gray-700 p-8 hover:border-primary-500 transition-colors"
                   >
                     <Icon className="w-10 h-10 text-primary-500 mb-4" />
                     <h3 className="text-xl font-semibold text-white mb-3">
@@ -225,9 +225,9 @@ const MarketingPage = () => {
           </div>
 
           <div className="flex justify-center mb-12">
-            <div className="bg-gray-800 rounded-full p-1 shadow-sm inline-flex border border-gray-700">
+            <div className="bg-gray-800 p-1 shadow-sm inline-flex border border-gray-700">
               <button
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-6 py-2 text-sm font-medium transition-colors ${
                   billingCycle === 'monthly'
                     ? 'bg-primary-600 text-white'
                     : 'text-gray-400 hover:text-white'
@@ -237,7 +237,7 @@ const MarketingPage = () => {
                 Monthly
               </button>
               <button
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-6 py-2 text-sm font-medium transition-colors ${
                   billingCycle === 'yearly'
                     ? 'bg-primary-600 text-white'
                     : 'text-gray-400 hover:text-white'
@@ -253,12 +253,12 @@ const MarketingPage = () => {
             {plans.map((plan) => (
               <div
                 key={plan.name}
-                className={`relative bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-700 ${
+                className={`relative bg-gray-800 shadow-lg overflow-hidden border border-gray-700 ${
                   plan.popular ? 'ring-2 ring-primary-500' : ''
                 }`}
               >
                 {plan.popular && (
-                  <div className="absolute top-0 right-0 bg-primary-500 text-white px-4 py-1 rounded-bl-lg text-sm font-medium">
+                  <div className="absolute top-0 right-0 bg-primary-500 text-white px-4 py-1 text-sm font-medium">
                     Most Popular
                   </div>
                 )}
@@ -304,13 +304,13 @@ const MarketingPage = () => {
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-800 border border-gray-700 p-8 rounded-xl">
+              <div key={index} className="bg-gray-800 border border-gray-700 p-8">
                 <p className="text-gray-300 mb-6">{testimonial.content}</p>
                 <div className="flex items-center">
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.name} 
-                    className="w-12 h-12 rounded-full mr-4"
+                    className="w-12 h-12 mr-4"
                   />
                   <div>
                     <div className="text-white font-medium">{testimonial.name}</div>
