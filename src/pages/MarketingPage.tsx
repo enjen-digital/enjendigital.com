@@ -2,10 +2,53 @@ import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import Button from '../components/ui/Button';
-import { Check } from 'lucide-react';
+import { Check, ArrowRight, BarChart, Globe, Users, TrendingUp } from 'lucide-react';
 
 const MarketingPage = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+  
+  const stats = [
+    { icon: BarChart, value: '250%', label: 'Average ROI' },
+    { icon: Globe, value: '1M+', label: 'Ad Impressions' },
+    { icon: Users, value: '10K+', label: 'Leads Generated' },
+    { icon: TrendingUp, value: '85%', label: 'Client Growth' }
+  ];
+  
+  const testimonials = [
+    {
+      name: 'Sarah Johnson',
+      role: 'CEO',
+      company: 'TechStart Solutions',
+      content: 'EnJen Digital transformed our online presence. Their strategic approach to digital marketing helped us achieve a 200% increase in qualified leads within just 6 months.',
+      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg'
+    },
+    {
+      name: 'Michael Chen',
+      role: 'Marketing Director',
+      company: 'InnovateX',
+      content: 'The ROI we\'ve seen with EnJen Digital has been incredible. Their team\'s expertise in PPC and social media marketing has directly contributed to our company\'s rapid growth.',
+      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg'
+    }
+  ];
+  
+  const faqs = [
+    {
+      question: 'What makes EnJen Digital different from other agencies?',
+      answer: 'We combine data-driven strategies with creative excellence to deliver measurable results. Our team of experts specializes in creating customized solutions that align with your business goals.'
+    },
+    {
+      question: 'How long does it take to see results?',
+      answer: 'While results vary by campaign and industry, most clients see significant improvements within 3-6 months. We provide detailed monthly reports to track progress and ROI.'
+    },
+    {
+      question: 'Do you offer customized solutions?',
+      answer: 'Yes! Every business is unique, and we tailor our strategies to meet your specific needs and goals. Our packages can be customized based on your requirements.'
+    },
+    {
+      question: 'What industries do you work with?',
+      answer: 'We work with businesses across various industries, including technology, healthcare, e-commerce, professional services, and more. Our diverse experience allows us to adapt our strategies effectively.'
+    }
+  ];
   
   const plans = [
     {
@@ -67,13 +110,54 @@ const MarketingPage = () => {
       <Navbar />
       
       <main className="pt-32 pb-20">
+        {/* Hero Section */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Digital Marketing Solutions
-            </h1>
+          <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
+            <div className="lg:w-1/2">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                Accelerate Your <span className="text-primary-500">Digital Growth</span>
+              </h1>
+              <p className="text-xl text-gray-300 mb-8">
+                Data-driven digital marketing strategies that deliver measurable results and drive business growth.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" onClick={() => window.location.href = '/contact'}>
+                  Get Started
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="group text-white border-white hover:bg-white hover:text-gray-900"
+                  onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  View Pricing
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+            </div>
+            <div className="lg:w-1/2">
+              <div className="grid grid-cols-2 gap-4">
+                {stats.map((stat, index) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div key={index} className="bg-gray-800 border border-gray-700 p-6 rounded-xl">
+                      <Icon className="w-8 h-8 text-primary-500 mb-4" />
+                      <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+                      <div className="text-gray-400">{stat.label}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Pricing Section */}
+          <div id="pricing" className="text-center mb-12 pt-20">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Transparent Pricing, Exceptional Results
+            </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Transform your online presence with our comprehensive digital marketing services
+              Choose the perfect plan to accelerate your business growth
             </p>
           </div>
 
@@ -145,6 +229,46 @@ const MarketingPage = () => {
                     ))}
                   </ul>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Testimonials Section */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+            What Our Clients Say
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-gray-800 border border-gray-700 p-8 rounded-xl">
+                <p className="text-gray-300 mb-6">{testimonial.content}</p>
+                <div className="flex items-center">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name} 
+                    className="w-12 h-12 rounded-full mr-4"
+                  />
+                  <div>
+                    <div className="text-white font-medium">{testimonial.name}</div>
+                    <div className="text-gray-400">{testimonial.role}, {testimonial.company}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* FAQ Section */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="max-w-3xl mx-auto">
+            {faqs.map((faq, index) => (
+              <div key={index} className="mb-6">
+                <h3 className="text-xl font-semibold text-white mb-2">{faq.question}</h3>
+                <p className="text-gray-300">{faq.answer}</p>
               </div>
             ))}
           </div>
