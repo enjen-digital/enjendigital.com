@@ -13,6 +13,13 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   
+  const marketingLinks = [
+    { name: 'Services', href: '#services' },
+    { name: 'Pricing', href: '#pricing' },
+    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'FAQ', href: '#faq' },
+  ];
+  
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
   useEffect(() => {
@@ -35,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
     { name: 'FAQ', href: '#faq' },
   ];
   
-  const navLinks = location.pathname === '/marketing' ? [] : bookingLinks;
+  const navLinks = location.pathname === '/marketing' ? marketingLinks : bookingLinks;
   
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -54,7 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            {location.pathname !== '/marketing' && navLinks.map((link) => (
+            {navLinks.map((link) => (
               <a 
                 key={link.name}
                 href={link.href}
@@ -88,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
           location.pathname === '/marketing' ? 'bg-gray-800' : 'bg-white'
         }`}>
           <nav className="flex flex-col space-y-4">
-            {location.pathname !== '/marketing' && navLinks.map((link) => (
+            {navLinks.map((link) => (
               <a 
                 key={link.name}
                 href={link.href}
