@@ -52,7 +52,7 @@ const HomePage = () => {
                 Static Marketing & Digital Transformation
               </h1>
               <p className="text-xl text-gray-300 mb-4 max-w-2xl">
-                EnJen Digital delivers enterprise-grade software solutions and digital marketing services to drive business transformation. 
+                EnJen Digital is a premier web design and digital marketing agency specializing in creating impactful online experiences and driving business growth.
               </p>
               <p className="text-lg text-primary-300 mb-8">
                 Every solution includes a comprehensive SEO package to maximize your online visibility.
