@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap, Check, LineChart, ShoppingCart } from 'lucide-react';
+import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap, Check, LineChart, ShoppingCart, TrendingUp } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
@@ -119,8 +119,70 @@ const HomePage = () => {
         </div>
       </div>
 
+      {/* Why Choose Us */}
+      <div className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+            Why Choose EnJen Digital
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto text-center mb-16">
+            We combine creative excellence with data-driven strategies to deliver exceptional results for our clients.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Star,
+                title: 'Proven Track Record',
+                description: 'Over 15 years of experience delivering successful digital solutions across multiple industries.'
+              },
+              {
+                icon: Shield,
+                title: 'End-to-End Solutions',
+                description: 'Comprehensive digital services from web design to marketing, all with built-in SEO optimization.'
+              },
+              {
+                icon: Award,
+                title: 'Results-Driven Approach',
+                description: 'We focus on delivering measurable results that directly impact your business growth.'
+              },
+              {
+                icon: Users,
+                title: 'Dedicated Support',
+                description: 'Personal account manager and responsive support team available when you need them.'
+              },
+              {
+                icon: TrendingUp,
+                title: 'Data-Driven Strategy',
+                description: 'Strategic decisions backed by analytics and industry insights for maximum impact.'
+              },
+              {
+                icon: Zap,
+                title: 'Rapid Implementation',
+                description: 'Quick deployment and efficient execution to get your solutions up and running fast.'
+              }
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div key={index} className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="p-3 bg-primary-50 rounded-lg inline-block mb-4">
+                    <Icon className="w-6 h-6 text-primary-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* Services Grid */}
-      <div className="py-16 bg-gray-100">
+      <div className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8">
             <Link 
@@ -184,51 +246,8 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Why Choose Us */}
-      <div className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12">
-            Why Choose EnJen Digital
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Star,
-                title: 'Industry Expertise',
-                description: '15+ years of experience in software development and digital marketing'
-              },
-              {
-                icon: Shield,
-                title: 'Enterprise Security',
-                description: 'Bank-grade security measures to protect your business data'
-              },
-              {
-                icon: Award,
-                title: 'Proven Results',
-                description: 'Consistently delivering measurable business outcomes'
-              }
-            ].map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div key={index} className="flex flex-col items-start">
-                  <div className="p-3 bg-primary-50 rounded-lg mb-4">
-                    <Icon className="w-6 h-6 text-primary-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {item.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
       {/* Industries */}
-      <div className="py-16 bg-gray-100">
+      <div className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 mb-12">
             Industries We Serve
