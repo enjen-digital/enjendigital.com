@@ -292,6 +292,7 @@ const HomePage = () => {
               'Insurance',
               'Restaurant',
               'Technology',
+             'Music',
             ].map((industry, index) => (
               <div 
                 key={index}
