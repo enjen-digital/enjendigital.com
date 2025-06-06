@@ -97,13 +97,6 @@ const HomePage = () => {
               </p>
               
               <div className="flex gap-4 mb-8">
-               <Button 
-                 size="lg"
-                 onClick={() => window.location.href = '/contact'}
-                 className="bg-primary-600 hover:bg-primary-700 text-white"
-               >
-                 Schedule a Consultation
-               </Button>
                 {industries.map((industry, index) => {
                   const Icon = industry.icon;
                   return (
@@ -327,6 +320,7 @@ const HomePage = () => {
             </p>
             <Button 
               size="lg"
+              onClick={() => window.location.href = '/contact'}
               className="bg-white text-primary-900 hover:bg-gray-100"
             >
               Schedule a Consultation
