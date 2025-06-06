@@ -283,16 +283,15 @@ const HomePage = () => {
           <h2 className="text-3xl font-bold text-gray-900 mb-12">
             Industries We Serve
           </h2>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              'Healthcare',
-              'Professional Services',
+              'Salons',
               'Retail & E-commerce',
-              'Manufacturing',
-              'Financial Services',
-              'Education',
+              'Automotive',
+              'Hospitality',
+              'Insurance',
+              'Restaurant',
               'Technology',
-              'Hospitality'
             ].map((industry, index) => (
               <div 
                 key={index}
