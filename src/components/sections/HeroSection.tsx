@@ -7,18 +7,18 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
   return (
-    <section className="pt-32 pb-20 relative overflow-hidden bg-gradient-to-br from-white to-primary-50">
+    <section className="pt-20 sm:pt-32 pb-12 sm:pb-20 relative overflow-hidden bg-gradient-to-br from-white to-primary-50">
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-b from-primary-200 to-transparent opacity-50"></div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+        <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12">
           <div className="w-full lg:w-1/2 animate-fade-in">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight" aria-label="Transform Your Business with Smart Booking">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 sm:mb-6 leading-tight text-center lg:text-left" aria-label="Transform Your Business with Smart Booking">
               Transform Your Business with Smart Booking
             </h1>
-            <p className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 max-w-lg">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-700 mb-4 sm:mb-8 max-w-lg text-center lg:text-left mx-auto lg:mx-0">
               All-in-one booking system with integrated website designed to streamline operations and boost revenue.
             </p>
             
@@ -40,11 +40,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
               </Button>
             </div>
             
-            <div className="mt-8 sm:mt-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-0">
-              <div className="text-gray-700 text-center sm:text-left whitespace-nowrap mb-4 sm:hidden">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-0">
+              <div className="text-gray-700 text-center sm:text-left whitespace-nowrap mb-3 sm:hidden text-sm">
                 <span className="font-bold">40+</span> salons & spas trust us
               </div>
-              <div className="flex -space-x-2 mr-4">
+              <div className="flex -space-x-1 sm:-space-x-2 mr-0 sm:mr-4">
                 {[
                   {
                     name: ['J.', '✧'],
@@ -66,58 +66,58 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
                     extraClasses: 'leading-[0.9]'
                   }
                 ].map((image, i) => (
-                  <div key={i} className="w-12 h-12 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden shadow-md">
+                  <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden shadow-md">
                     <div className={`w-full h-full flex items-center justify-center ${image.bg} ${image.text} text-[8px] font-bold ${image.extraClasses || ''}`}>
                       {Array.isArray(image.name) ? (
                         <div className="flex flex-col items-center leading-none">
-                          <span className="text-[10px] sm:text-[8px]">{image.name[0]}</span>
-                          <span className="text-[12px] sm:text-[10px]">{image.name[1]}</span>
+                          <span className="text-[6px] sm:text-[8px]">{image.name[0]}</span>
+                          <span className="text-[8px] sm:text-[10px]">{image.name[1]}</span>
                         </div>
                       ) : (
-                        <span className="text-[10px] sm:text-[8px]">{image.name}</span>
+                        <span className="text-[6px] sm:text-[8px]">{image.name}</span>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="text-gray-700 text-center sm:text-left whitespace-nowrap hidden sm:block">
+              <div className="text-gray-700 text-center sm:text-left whitespace-nowrap hidden sm:block text-sm">
                 <span className="font-bold">40+</span> salons & spas trust us
               </div>
             </div>
           </div>
           
-          <div className="w-full lg:w-1/2 animate-slide-in-right px-4 sm:px-0">
+          <div className="w-full lg:w-1/2 animate-slide-in-right px-2 sm:px-0 mt-6 lg:mt-0">
             <div className="relative">
               <div className="bg-white rounded-xl shadow-2xl overflow-hidden group">
                 <img
                   src="/booking slide.png"
                   alt="Booking System Interface"
-                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 group-hover:translate-y-[-25%]"
+                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105 lg:group-hover:scale-110 lg:group-hover:translate-y-[-25%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-lg font-semibold mb-2">Smart Booking System</h3>
-                    <p className="text-sm opacity-90">Streamline your appointments with our intuitive booking interface</p>
+                    <h3 className="text-base sm:text-lg font-semibold mb-2">Smart Booking System</h3>
+                    <p className="text-xs sm:text-sm opacity-90">Streamline your appointments with our intuitive booking interface</p>
                   </div>
                 </div>
               </div>
               
-              <div className="absolute -bottom-12 sm:-bottom-16 left-0 bg-white rounded-lg shadow-lg p-3 sm:p-4 w-36 sm:w-48 transform sm:-translate-x-6">
+              <div className="absolute -bottom-8 sm:-bottom-16 left-0 bg-white rounded-lg shadow-lg p-2 sm:p-4 w-28 sm:w-48 transform sm:-translate-x-6">
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                  <div className="text-xs sm:text-sm font-semibold text-gray-900">Today</div>
+                  <div className="text-[10px] sm:text-sm font-semibold text-gray-900">Today</div>
                 </div>
-                <div className="text-gray-700 font-medium text-sm sm:text-base">+12 Bookings</div>
-                <div className="text-green-600 text-xs sm:text-sm">↑ 18% from last week</div>
+                <div className="text-gray-700 font-medium text-xs sm:text-base">+12 Bookings</div>
+                <div className="text-green-600 text-[10px] sm:text-sm">↑ 18% from last week</div>
               </div>
               
-              <div className="absolute -top-12 sm:-top-16 right-0 bg-white rounded-lg shadow-lg p-3 sm:p-4 w-36 sm:w-48 transform sm:translate-x-6">
+              <div className="absolute -top-8 sm:-top-16 right-0 bg-white rounded-lg shadow-lg p-2 sm:p-4 w-28 sm:w-48 transform sm:translate-x-6">
                 <div className="flex items-center justify-between mb-2">
                   <div className="w-2 h-2 rounded-full bg-accent-500"></div>
-                  <div className="text-xs sm:text-sm font-semibold text-gray-900">Analytics</div>
+                  <div className="text-[10px] sm:text-sm font-semibold text-gray-900">Analytics</div>
                 </div>
-                <div className="text-gray-700 font-medium text-sm sm:text-base">$2,540</div>
-                <div className="text-accent-600 text-xs sm:text-sm">↑ 24% from last month</div>
+                <div className="text-gray-700 font-medium text-xs sm:text-base">$2,540</div>
+                <div className="text-accent-600 text-[10px] sm:text-sm">↑ 24% from last month</div>
               </div>
             </div>
           </div>

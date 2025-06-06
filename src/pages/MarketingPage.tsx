@@ -145,12 +145,12 @@ const MarketingPage = () => {
       <main className="pt-32 pb-20">
         {/* Hero Section */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-12 lg:mb-20">
             <div className="lg:w-1/2">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight text-center lg:text-left">
                 Accelerate Your <span className="text-primary-500">Digital Growth</span>
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-base sm:text-xl text-gray-300 mb-6 sm:mb-8 text-center lg:text-left">
                 Data-driven digital marketing strategies that deliver measurable results and drive business growth.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -169,14 +169,14 @@ const MarketingPage = () => {
               </div>
             </div>
             <div className="lg:w-1/2">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {stats.map((stat, index) => {
                   const Icon = stat.icon;
                   return (
-                    <div key={index} className="bg-gray-800 border border-gray-700 p-6">
-                      <Icon className="w-8 h-8 text-primary-500 mb-4" />
-                      <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-                      <div className="text-gray-400">{stat.label}</div>
+                    <div key={index} className="bg-gray-800 border border-gray-700 p-4 sm:p-6 text-center">
+                      <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-500 mb-2 sm:mb-4 mx-auto" />
+                      <div className="text-xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">{stat.value}</div>
+                      <div className="text-gray-400 text-xs sm:text-sm">{stat.label}</div>
                     </div>
                   );
                 })}
@@ -185,27 +185,27 @@ const MarketingPage = () => {
           </div>
 
           {/* Services Section */}
-          <div id="services" className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
+          <div id="services" className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 text-center">
               Our Digital Marketing Services
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto text-center mb-12">
+            <p className="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto text-center mb-8 sm:mb-12">
               Comprehensive digital marketing solutions tailored to your business goals
             </p>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {services.map((service, index) => {
                 const Icon = service.icon;
                 return (
                   <div 
                     key={index} 
-                    className="bg-gray-800 border border-gray-700 p-8 hover:border-primary-500 transition-colors"
+                    className="bg-gray-800 border border-gray-700 p-4 sm:p-8 hover:border-primary-500 transition-colors"
                   >
-                    <Icon className="w-10 h-10 text-primary-500 mb-4" />
-                    <h3 className="text-xl font-semibold text-white mb-3">
+                    <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary-500 mb-3 sm:mb-4" />
+                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">
                       {service.title}
                     </h3>
-                    <p className="text-gray-300">
+                    <p className="text-gray-300 text-sm sm:text-base">
                       {service.description}
                     </p>
                   </div>
@@ -215,16 +215,16 @@ const MarketingPage = () => {
           </div>
 
           {/* Pricing Section */}
-          <div id="pricing" className="text-center mb-12 pt-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <div id="pricing" className="text-center mb-8 sm:mb-12 pt-12 sm:pt-20">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
               Transparent Pricing, Exceptional Results
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto">
               Choose the perfect plan to accelerate your business growth
             </p>
           </div>
 
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-8 sm:mb-12">
             <div className="bg-gray-800 p-1 shadow-sm inline-flex border border-gray-700">
               <button
                 className={`px-6 py-2 text-sm font-medium transition-colors ${
@@ -249,7 +249,7 @@ const MarketingPage = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
             {plans.map((plan) => (
               <div
                 key={plan.name}
@@ -263,12 +263,12 @@ const MarketingPage = () => {
                   </div>
                 )}
                 
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                  <p className="text-gray-300 mb-6">{plan.description}</p>
+                <div className="p-4 sm:p-8">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                  <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">{plan.description}</p>
                   
-                  <div className="mb-6">
-                    <span className="text-4xl font-bold text-white">${plan.price}</span>
+                  <div className="mb-4 sm:mb-6">
+                    <span className="text-3xl sm:text-4xl font-bold text-white">${plan.price}</span>
                     <span className="text-gray-300">/month</span>
                   </div>
                   
@@ -285,12 +285,12 @@ const MarketingPage = () => {
                   </Button>
                 </div>
                 
-                <div className="border-t border-gray-700 p-8">
+                <div className="border-t border-gray-700 p-4 sm:p-8">
                   <ul className="space-y-4">
                     {plan.features.map((feature, index) => (
                       <li key={index} className="flex items-start">
                         <Check className="w-5 h-5 text-primary-600 mr-3 mt-0.5" />
-                        <span className="text-gray-300">{feature}</span>
+                        <span className="text-gray-300 text-sm sm:text-base">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -301,23 +301,23 @@ const MarketingPage = () => {
         </div>
         
         {/* Testimonials Section */}
-        <div id="testimonials" className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+        <div id="testimonials" className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8 sm:mb-12 text-center">
             What Our Clients Say
           </h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-800 border border-gray-700 p-8">
-                <p className="text-gray-300 mb-6">{testimonial.content}</p>
+              <div key={index} className="bg-gray-800 border border-gray-700 p-4 sm:p-8">
+                <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">{testimonial.content}</p>
                 <div className="flex items-center">
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.name} 
-                    className="w-12 h-12 mr-4"
+                    className="w-10 h-10 sm:w-12 sm:h-12 mr-3 sm:mr-4 rounded-full object-cover"
                   />
                   <div>
-                    <div className="text-white font-medium">{testimonial.name}</div>
-                    <div className="text-gray-400">{testimonial.role}, {testimonial.company}</div>
+                    <div className="text-white font-medium text-sm sm:text-base">{testimonial.name}</div>
+                    <div className="text-gray-400 text-xs sm:text-sm">{testimonial.role}, {testimonial.company}</div>
                   </div>
                 </div>
               </div>
@@ -326,15 +326,15 @@ const MarketingPage = () => {
         </div>
         
         {/* FAQ Section */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8 sm:mb-12 text-center">
             Frequently Asked Questions
           </h2>
           <div className="max-w-3xl mx-auto">
             {faqs.map((faq, index) => (
-              <div key={index} className="mb-6">
-                <h3 className="text-xl font-semibold text-white mb-2">{faq.question}</h3>
-                <p className="text-gray-300">{faq.answer}</p>
+              <div key={index} className="mb-4 sm:mb-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">{faq.question}</h3>
+                <p className="text-gray-300 text-sm sm:text-base">{faq.answer}</p>
               </div>
             ))}
           </div>

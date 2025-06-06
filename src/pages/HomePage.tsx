@@ -82,27 +82,27 @@ const HomePage = () => {
       <HomeNavbar />
       
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-gray-900 to-primary-900 pt-32 pb-16">
+      <div className="bg-gradient-to-r from-gray-900 to-primary-900 pt-20 sm:pt-32 pb-8 sm:pb-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+          <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12">
             <div className="lg:w-1/2">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight text-center lg:text-left">
                 Static Marketing & Digital Transformation
               </h1>
-              <p className="text-xl text-gray-300 mb-4 max-w-2xl">
+              <p className="text-base sm:text-xl text-gray-300 mb-3 sm:mb-4 max-w-2xl text-center lg:text-left">
                 EnJen Digital is a premier web design and digital marketing agency specializing in creating impactful online experiences and driving business growth.
               </p>
-              <p className="text-lg text-primary-300 mb-8">
+              <p className="text-sm sm:text-lg text-primary-300 mb-6 sm:mb-8 text-center lg:text-left">
                 Every solution includes a comprehensive SEO package to maximize your online visibility.
               </p>
               
-              <div className="flex gap-4 mb-8">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-8">
                 {industries.map((industry, index) => {
                   const Icon = industry.icon;
                   return (
                     <div
                       key={index}
-                      className={`relative p-3 rounded-lg cursor-pointer transition-all duration-300 w-1/3 hover:bg-opacity-90 ${
+                      className={`relative p-2 sm:p-3 rounded-lg cursor-pointer transition-all duration-300 flex-1 hover:bg-opacity-90 ${
                         activeCard === index
                           ? 'bg-white text-gray-900'
                           : 'bg-gray-800 text-white hover:bg-gray-700'
@@ -114,11 +114,11 @@ const HomePage = () => {
                         }, 300);
                       }}
                     >
-                      <div className="flex items-center mb-2">
-                        <Icon className="w-5 h-5 mr-2 flex-shrink-0" />
-                        <h3 className="font-semibold">{industry.title}</h3>
+                      <div className="flex flex-col sm:flex-row items-center sm:items-start mb-1 sm:mb-2">
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 mb-1 sm:mb-0 sm:mr-2 flex-shrink-0" />
+                        <h3 className="font-semibold text-xs sm:text-sm text-center sm:text-left">{industry.title}</h3>
                       </div>
-                      <p className="text-sm opacity-80">{industry.description}</p>
+                      <p className="text-xs sm:text-sm opacity-80 text-center sm:text-left hidden sm:block">{industry.description}</p>
                       {activeCard === index && (
                         <div 
                           className="absolute bottom-0 left-0 right-0 h-1 animate-timer"
@@ -132,7 +132,7 @@ const HomePage = () => {
             </div>
             
             <div className="lg:w-1/2">
-              <div className="relative bg-gray-800 overflow-hidden shadow-2xl h-[400px]">
+              <div className="relative bg-gray-800 overflow-hidden shadow-2xl h-[250px] sm:h-[400px] rounded-lg">
                 {industries.map((industry, index) => (
                   <div
                     key={index}
@@ -159,18 +159,18 @@ const HomePage = () => {
 
       {/* Why Choose Us */}
       <section 
-        className="py-20 opacity-0 transition-opacity duration-[2500ms] transform translate-y-8 transition-transform" 
+        className="py-10 sm:py-20 opacity-0 transition-opacity duration-[2500ms] transform translate-y-8 transition-transform" 
         id="why-choose-us"
         style={{
           background: 'linear-gradient(to bottom right, rgba(255, 255, 255, 0) 0%, rgba(0, 255, 255, 0.05) 50%)'
         }}
       >
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-12 text-center lg:text-left">
             Why Choose EnJen Digital
           </h2>
           
-          <div className="flex divide-x divide-gray-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:divide-x lg:divide-gray-300 gap-6 lg:gap-0">
             {[
               {
                 icon: Star,
@@ -195,14 +195,14 @@ const HomePage = () => {
             ].map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="flex-1 px-8 float-up">
-                  <div className="p-3 bg-primary-50 rounded-full inline-block mb-4">
+                <div key={index} className="flex-1 px-4 lg:px-8 float-up text-center lg:text-left">
+                  <div className="p-3 bg-primary-50 rounded-full inline-block mb-3 sm:mb-4">
                     <Icon className="w-6 h-6 text-primary-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-xs sm:text-sm">
                     {item.description}
                   </p>
                 </div>
@@ -213,33 +213,33 @@ const HomePage = () => {
       </section>
 
       {/* Services Grid */}
-      <div className="py-20 bg-white">
+      <div className="py-10 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <Link 
               to="/booking" 
-              className="bg-white p-8 border-l-4 border-primary-600 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white p-4 sm:p-8 border-l-4 border-primary-600 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
                 Enterprise Booking Platform
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
                 Transform your service-based business with our comprehensive booking and management solution.
               </p>
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                 {[
                   'Online Booking System',
                   'Staff Management',
                   'Analytics Dashboard',
                   'Client Communication'
                 ].map((feature, index) => (
-                  <li key={index} className="flex items-center text-gray-700">
+                  <li key={index} className="flex items-center text-gray-700 text-sm sm:text-base">
                     <Check className="w-5 h-5 text-primary-600 mr-2" />
                     {feature}
                   </li>
                 ))}
               </ul>
-              <div className="flex items-center text-primary-600">
+              <div className="flex items-center text-primary-600 text-sm sm:text-base">
                 <span className="font-medium">Learn More</span>
                 <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
               </div>
@@ -247,28 +247,28 @@ const HomePage = () => {
 
             <Link 
               to="/marketing" 
-              className="bg-white p-8 border-l-4 border-primary-600 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white p-4 sm:p-8 border-l-4 border-primary-600 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
                 Digital Marketing Solutions
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
                 Drive growth with our comprehensive digital marketing and analytics platform.
               </p>
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                 {[
                   'SEO Optimization',
                   'Social Media Marketing',
                   'Content Strategy',
                   'Performance Analytics'
                 ].map((feature, index) => (
-                  <li key={index} className="flex items-center text-gray-700">
+                  <li key={index} className="flex items-center text-gray-700 text-sm sm:text-base">
                     <Check className="w-5 h-5 text-primary-600 mr-2" />
                     {feature}
                   </li>
                 ))}
               </ul>
-              <div className="flex items-center text-primary-600">
+              <div className="flex items-center text-primary-600 text-sm sm:text-base">
                 <span className="font-medium">Learn More</span>
                 <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
               </div>
@@ -278,12 +278,12 @@ const HomePage = () => {
       </div>
 
       {/* Industries */}
-      <div className="py-20 bg-gray-50">
+      <div className="py-10 sm:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-12 text-center lg:text-left">
             Industries We Serve
           </h2>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
             {[
               'Salons',
               'Retail & E-commerce',
@@ -300,9 +300,9 @@ const HomePage = () => {
                  const footer = document.querySelector('footer');
                  footer?.scrollIntoView({ behavior: 'smooth' });
                }}
-               className="bg-white text-primary-900 hover:bg-gray-100 font-semibold px-8 py-4"
+               className="bg-white text-primary-900 hover:bg-gray-100 font-semibold px-3 sm:px-8 py-3 sm:py-4 cursor-pointer transition-colors rounded-lg"
               >
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-sm sm:text-lg font-semibold text-gray-900 text-center">
                   {industry}
                 </h3>
               </div>
@@ -312,13 +312,13 @@ const HomePage = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-16 bg-primary-900">
+      <div className="py-10 sm:py-16 bg-primary-900">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-base sm:text-xl text-gray-300 mb-6 sm:mb-8">
               Let's discuss how we can help you achieve your business goals.
             </p>
             <Button 

@@ -22,7 +22,7 @@ const BookingPage = () => {
         const sectionTop = section.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         
-        if (sectionTop < windowHeight * 0.75) {
+        if (sectionTop < windowHeight * 0.85) {
           section.classList.add('animate-fade-in');
         }
       });
@@ -38,7 +38,7 @@ const BookingPage = () => {
   }, []);
 
   return (
-    <div className="font-sans">
+    <div className="font-sans overflow-x-hidden">
       <Navbar onDemoClick={() => setIsDemoModalOpen(true)} />
       <main>
         <HeroSection onDemoClick={() => setIsDemoModalOpen(true)} />
