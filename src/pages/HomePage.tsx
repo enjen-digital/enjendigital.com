@@ -8,6 +8,24 @@ import { useState, useEffect } from 'react';
 const HomePage = () => {
   const [activeCard, setActiveCard] = useState(0);
   
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.getElementById('why-choose-us');
+      if (section) {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (sectionTop < windowHeight * 0.75) {
+          section.classList.add('animate-fade-in');
+        }
+      }
+    };
+    
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
   const industries = [
     {
       title: 'Booking System',
@@ -120,7 +138,7 @@ const HomePage = () => {
       </div>
 
       {/* Why Choose Us */}
-      <div className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 opacity-0 transition-opacity duration-1000" id="why-choose-us">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
             Why Choose EnJen Digital
@@ -166,7 +184,7 @@ const HomePage = () => {
             })}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Services Grid */}
       <div className="py-20 bg-white">
