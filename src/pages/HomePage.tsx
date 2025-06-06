@@ -321,7 +321,7 @@ const HomePage = () => {
             <Button 
               size="lg"
               onClick={() => window.location.href = '/contact'}
-              className="bg-white text-primary-900 hover:bg-gray-100"
+              className="bg-black text-white hover:bg-gray-800"
             >
               Schedule a Consultation
             </Button>
