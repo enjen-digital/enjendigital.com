@@ -97,6 +97,13 @@ const HomePage = () => {
               </p>
               
               <div className="flex gap-4 mb-8">
+               <Button 
+                 size="lg"
+                 onClick={() => window.location.href = '/contact'}
+                 className="bg-primary-600 hover:bg-primary-700 text-white"
+               >
+                 Schedule a Consultation
+               </Button>
                 {industries.map((industry, index) => {
                   const Icon = industry.icon;
                   return (
@@ -296,7 +303,8 @@ const HomePage = () => {
             ].map((industry, index) => (
               <div 
                 key={index}
-                className="bg-white p-6 border-l-4 border-primary-600 shadow hover:shadow-md transition-shadow"
+               onClick={() => window.location.href = '/contact'}
+               className="bg-white text-primary-900 hover:bg-gray-100 font-semibold px-8 py-4"
               >
                 <h3 className="text-lg font-semibold text-gray-900">
                   {industry}
