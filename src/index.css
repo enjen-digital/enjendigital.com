@@ -92,6 +92,19 @@ section.animate-fade-in {
   background-color: currentColor;
 }
 
+@keyframes slowZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.slow-zoom {
+  animation: slowZoom 5s ease-in-out forwards;
+}
+
 .feature-highlight {
   animation: glow 4s infinite ease-in-out;
   font-weight: 600;

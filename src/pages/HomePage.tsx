@@ -136,7 +136,7 @@ const HomePage = () => {
                     <img
                       src={industry.image}
                       alt={industry.title}
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full object-cover ${activeCard === index ? 'slow-zoom' : ''}`}
                     />
                   </div>
                 ))}
