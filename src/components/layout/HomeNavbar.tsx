@@ -92,15 +92,16 @@ const HomeNavbar: React.FC = () => {
               <a 
                 key={link.name}
                 href={link.href}
-                onClick={link.onClick}
                 className={`font-medium py-2 transition-colors text-sm ${
                   isScrolled 
                     ? 'text-gray-700 hover:text-primary-600' 
                     : 'text-white hover:text-primary-300'
                 }`}
                 onClick={(e) => {
-                  if (link.onClick) {
-                    link.onClick();
+                  if (link.name === 'Contact') {
+                    e.preventDefault();
+                    const footer = document.querySelector('footer');
+                    footer?.scrollIntoView({ behavior: 'smooth' });
                   }
                   setIsMenuOpen(false);
                 }}
