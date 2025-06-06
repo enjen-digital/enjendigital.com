@@ -25,7 +25,7 @@ const ContactSection: React.FC = () => {
                     <div className="mr-4">
                       <Phone size={20} />
                     </div>
-                    <span>(920) 215-1802</span>
+                    <span>(833) 575-8448</span>
                   </div>
                   <div className="flex items-center">
                     <div className="mr-4">
