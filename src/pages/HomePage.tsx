@@ -15,6 +15,17 @@ const HomePage = () => {
         const sectionTop = section.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         
+        // Calculate scroll progress for background transition
+        const scrollProgress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (windowHeight * 0.5)));
+        
+        // Apply background transition
+        if (scrollProgress > 0) {
+          section.style.background = `linear-gradient(to bottom right, 
+            rgba(255, 255, 255, ${scrollProgress}) ${scrollProgress * 100}%, 
+            rgba(0, 255, 255, ${0.05 * (1 - scrollProgress)}) ${100 - scrollProgress * 50}%
+          )`;
+        }
+        
         if (sectionTop < windowHeight * 0.8) {
           section.classList.add('animate-fade-in');
           section.style.transform = 'translateY(0)';
@@ -147,7 +158,13 @@ const HomePage = () => {
       </div>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gray-50 opacity-0 transition-opacity duration-[2500ms] transform translate-y-8 transition-transform" id="why-choose-us">
+      <section 
+        className="py-20 opacity-0 transition-opacity duration-[2500ms] transform translate-y-8 transition-transform" 
+        id="why-choose-us"
+        style={{
+          background: 'linear-gradient(to bottom right, rgba(255, 255, 255, 0) 0%, rgba(0, 255, 255, 0.05) 50%)'
+        }}
+      >
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
             Why Choose EnJen Digital
