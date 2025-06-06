@@ -24,7 +24,14 @@ const HomeNavbar: React.FC = () => {
     { name: 'Home', href: '/' },
     { name: 'Booking System', href: '/booking' },
     { name: 'Digital Marketing', href: '/marketing' },
-    { name: 'Contact', href: '/contact' },
+    { 
+      name: 'Contact', 
+      href: '#', 
+      onClick: () => {
+        const footer = document.querySelector('footer');
+        footer?.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
   ];
   
   return (
@@ -50,6 +57,7 @@ const HomeNavbar: React.FC = () => {
               <a 
                 key={link.name}
                 href={link.href}
+               onClick={link.onClick}
                 className={`font-medium transition-colors text-sm ${
                   isScrolled 
                     ? 'text-gray-700 hover:text-primary-600' 
@@ -84,6 +92,7 @@ const HomeNavbar: React.FC = () => {
               <a 
                 key={link.name}
                 href={link.href}
+               onClick={link.onClick}
                 className={`font-medium py-2 transition-colors text-sm ${
                   isScrolled 
                     ? 'text-gray-700 hover:text-primary-600' 

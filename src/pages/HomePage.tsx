@@ -152,6 +152,16 @@ const HomePage = () => {
                   </div>
                 ))}
               </div>
+              <Button 
+                size="lg"
+                onClick={() => {
+                  const footer = document.querySelector('footer');
+                  footer?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-black text-white hover:bg-gray-800"
+              >
+                Schedule a Consultation
+              </Button>
             </div>
           </div>
         </div>
@@ -296,7 +306,10 @@ const HomePage = () => {
             ].map((industry, index) => (
               <div 
                 key={index}
-               onClick={() => window.location.href = '/contact'}
+               onClick={() => {
+                 const footer = document.querySelector('footer');
+                 footer?.scrollIntoView({ behavior: 'smooth' });
+               }}
                className="bg-white text-primary-900 hover:bg-gray-100 font-semibold px-8 py-4"
               >
                 <h3 className="text-lg font-semibold text-gray-900">
