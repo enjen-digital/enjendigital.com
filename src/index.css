@@ -44,6 +44,18 @@ section.animate-fade-in {
   h1, h2, h3, h4, h5, h6 {
     text-rendering: optimizeLegibility;
   }
+  
+  /* Ensure images load properly on mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Fix for hero section images on mobile */
+  .hero-image-container {
+    min-height: 250px;
+    background-color: #374151;
+  }
 }
 
 .animate-slide-up {

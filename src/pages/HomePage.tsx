@@ -148,7 +148,19 @@ const HomePage = () => {
                       src={industry.image}
                       alt={industry.title}
                       className={`w-full h-full object-cover ${activeCard === index ? 'slow-zoom' : ''}`}
+                      loading="lazy"
+                      onError={(e) => {
+                        console.error(`Failed to load image: ${industry.image}`);
+                        e.currentTarget.style.display = 'none';
+                      }}
                     />
+                    {/* Fallback content if image fails to load */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                      <div className="text-center text-white p-4">
+                        <div className="text-2xl font-bold mb-2">{industry.title}</div>
+                        <div className="text-sm opacity-90">{industry.description}</div>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
