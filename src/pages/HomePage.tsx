@@ -15,8 +15,9 @@ const HomePage = () => {
         const sectionTop = section.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         
-        if (sectionTop < windowHeight * 0.75) {
+        if (sectionTop < windowHeight * 0.8) {
           section.classList.add('animate-fade-in');
+          section.style.transform = 'translateY(0)';
         }
       }
     };
@@ -138,7 +139,7 @@ const HomePage = () => {
       </div>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gray-50 opacity-0 transition-opacity duration-1000" id="why-choose-us">
+      <section className="py-20 bg-gray-50 opacity-0 transition-opacity duration-[2500ms] transform translate-y-8 transition-transform" id="why-choose-us">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
             Why Choose EnJen Digital
