@@ -84,7 +84,7 @@ const HomePage = () => {
                       {activeCard === index && (
                         <div 
                           className="absolute bottom-0 left-0 right-0 h-1 animate-timer"
-                          style={{ backgroundColor: 'currentColor', opacity: 0.3 }}
+                          style={{ backgroundColor: '#00ffff', opacity: 0.8 }}
                         />
                       )}
                     </div>
