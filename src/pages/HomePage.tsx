@@ -20,7 +20,7 @@ const HomePage = () => {
       title: 'Web Design',
       icon: LineChart,
       description: 'Custom website development with SEO package',
-      image: '/Screenshot Analytic.png',
+      image: '/web design 2.png',
       path: '/marketing'
     },
     {
