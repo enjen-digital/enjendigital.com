@@ -18,6 +18,14 @@ const HomePage = () => {
         if (sectionTop < windowHeight * 0.8) {
           section.classList.add('animate-fade-in');
           section.style.transform = 'translateY(0)';
+          
+          // Animate individual cards with staggered timing
+          const cards = section.querySelectorAll('.float-up');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('animate');
+            }, index * 200); // 200ms delay between each card
+          });
         }
       }
     };
@@ -170,7 +178,7 @@ const HomePage = () => {
             ].map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="flex-1 px-8">
+                <div key={index} className="flex-1 px-8 float-up">
                   <div className="p-3 bg-primary-50 rounded-full inline-block mb-4">
                     <Icon className="w-6 h-6 text-primary-600" />
                   </div>
