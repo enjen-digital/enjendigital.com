@@ -27,7 +27,7 @@ const HomePage = () => {
       title: 'E-Commerce',
       icon: ShoppingCart,
       description: 'Custom e-commerce solutions with SEO integration',
-      image: '/team members.png',
+      image: '/ecommerce.jpg',
       path: '/e-commerce'
     }
   ];
