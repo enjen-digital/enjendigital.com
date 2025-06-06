@@ -98,24 +98,19 @@ const HomePage = () => {
                 {industries.map((industry, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                    className={`absolute inset-0 transition-all duration-500 transform ${
                       activeCard === index 
-                        ? 'opacity-100 translate-x-0 z-10' 
+                        ? 'opacity-100 translate-x-0' 
                         : index < activeCard 
-                          ? 'opacity-0 translate-x-full z-0'
-                          : 'opacity-0 -translate-x-full z-0'
+                          ? 'opacity-0 -translate-x-full'
+                          : 'opacity-0 translate-x-full'
                     }`}
                   >
                     <img
                       src={industry.image}
                       alt={industry.title}
-                      className="w-full h-full object-cover transition-transform duration-700"
+                      className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <h3 className="text-xl font-bold mb-1">{industry.title}</h3>
-                      <p className="text-sm opacity-90">{industry.description}</p>
-                    </div>
                   </div>
                 ))}
               </div>
