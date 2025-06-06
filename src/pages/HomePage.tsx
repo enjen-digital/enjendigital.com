@@ -132,7 +132,7 @@ const HomePage = () => {
             </div>
             
             <div className="lg:w-1/2">
-              <div className="relative bg-gray-800 rounded-lg overflow-hidden shadow-2xl h-[400px]">
+              <div className="relative bg-gray-800 overflow-hidden shadow-2xl h-[400px]">
                 {industries.map((industry, index) => (
                   <div
                     key={index}
