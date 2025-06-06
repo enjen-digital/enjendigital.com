@@ -276,7 +276,10 @@ const MarketingPage = () => {
                     variant={plan.popular ? 'primary' : 'outline'}
                     size="lg"
                     fullWidth
-                    onClick={() => window.location.href = '/contact'}
+                    onClick={() => {
+                      const footer = document.querySelector('footer');
+                      footer?.scrollIntoView({ behavior: 'smooth' });
+                    }}
                   >
                     Get Started
                   </Button>
