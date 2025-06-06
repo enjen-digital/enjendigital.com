@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap, Check, LineChart, ShoppingCart, TrendingUp } from 'lucide-react';
 import Button from '../components/ui/Button';
-import Navbar from '../components/layout/Navbar';
+import HomeNavbar from '../components/layout/HomeNavbar';
 import Footer from '../components/layout/Footer';
 import { useState, useEffect } from 'react';
 
@@ -79,7 +79,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+      <HomeNavbar />
       
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-gray-900 to-primary-900 pt-32 pb-16">
