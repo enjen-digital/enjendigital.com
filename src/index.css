@@ -87,35 +87,6 @@ section.animate-fade-in {
   }
 }
 
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%) scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes slideOutToLeft {
-  from {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-100%) scale(0.95);
-    opacity: 0;
-  }
-}
-
-.slide-enter {
-  animation: slideInFromRight 0.7s ease-out forwards;
-}
-
-.slide-exit {
-  animation: slideOutToLeft 0.7s ease-out forwards;
-}
 .animate-timer {
   animation: timer 5s linear forwards;
   background-color: currentColor;

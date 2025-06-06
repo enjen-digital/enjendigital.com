@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 
 const HomePage = () => {
   const [activeCard, setActiveCard] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   
   const industries = [
     {
@@ -35,27 +34,11 @@ const HomePage = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
       setActiveCard((prev) => (prev + 1) % industries.length);
-        setIsTransitioning(false);
-      }, 150);
     }, 5000);
     return () => clearInterval(timer);
   }, []);
 
-  const handleCardClick = (index: number) => {
-    if (index !== activeCard) {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setActiveCard(index);
-        setIsTransitioning(false);
-      }, 150);
-    }
-    setTimeout(() => {
-      window.location.href = industries[index].path;
-    }, 300);
-  };
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -86,7 +69,12 @@ const HomePage = () => {
                           ? 'bg-white text-gray-900'
                           : 'bg-gray-800 text-white hover:bg-gray-700'
                       }`}
-                      onClick={() => handleCardClick(index)}
+                      onClick={() => {
+                        setActiveCard(index);
+                        setTimeout(() => {
+                          window.location.href = industry.path;
+                        }, 300);
+                      }}
                     >
                       <div className="flex items-center mb-2">
                         <Icon className="w-5 h-5 mr-2 flex-shrink-0" />
@@ -106,52 +94,25 @@ const HomePage = () => {
             </div>
             
             <div className="lg:w-1/2">
-              <div className="relative bg-gray-800 rounded-lg overflow-hidden shadow-2xl h-[400px] group">
-                {/* Background overlay for smooth transitions */}
-                <div className={`absolute inset-0 bg-black transition-opacity duration-300 z-10 ${
-                  isTransitioning ? 'opacity-30' : 'opacity-0'
-                }`} />
-                
+              <div className="relative bg-gray-800 rounded-lg overflow-hidden shadow-2xl h-[400px]">
                 {industries.map((industry, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${
+                    className={`absolute inset-0 transition-all duration-500 transform ${
                       activeCard === index 
-                        ? 'opacity-100 translate-x-0 scale-100' 
+                        ? 'opacity-100 translate-x-0' 
                         : index < activeCard 
-                          ? 'opacity-0 -translate-x-full scale-95'
-                          : 'opacity-0 translate-x-full scale-95'
+                          ? 'opacity-0 -translate-x-full'
+                          : 'opacity-0 translate-x-full'
                     }`}
                   >
                     <img
                       src={industry.image}
                       alt={industry.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover"
                     />
-                    {/* Image overlay with title */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <h3 className="text-xl font-bold mb-2">{industry.title}</h3>
-                        <p className="text-sm opacity-90">{industry.description}</p>
-                      </div>
-                    </div>
                   </div>
                 ))}
-                
-                {/* Navigation dots */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-                  {industries.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleCardClick(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        activeCard === index 
-                          ? 'bg-white scale-125' 
-                          : 'bg-white/50 hover:bg-white/75'
-                      }`}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
           </div>
