@@ -58,7 +58,7 @@ const HomePage = () => {
       title: 'Web Design',
       icon: LineChart,
       description: 'Custom website development with SEO package',
-      image: 'Web Design 2.png',
+      image: '/Web Design 2.png',
       path: '/marketing'
     },
     {
@@ -320,7 +320,14 @@ const HomePage = () => {
             </p>
             <Button 
               size="lg"
-              onClick={() => window.location.href = '/contact'}
+              onClick={() => {
+                const footer = document.querySelector('footer');
+                footer?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              onClick={() => {
+                const footer = document.querySelector('footer');
+                footer?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="bg-black text-white hover:bg-gray-800"
             >
               Schedule a Consultation

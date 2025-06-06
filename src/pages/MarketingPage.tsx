@@ -155,6 +155,10 @@ const MarketingPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" onClick={() => window.location.href = '/contact'}>
+                <Button size="lg" onClick={() => {
+                  const footer = document.querySelector('footer');
+                  footer?.scrollIntoView({ behavior: 'smooth' });
+                }}>
                   Get Started
                 </Button>
                 <Button 
@@ -276,7 +280,10 @@ const MarketingPage = () => {
                     variant={plan.popular ? 'primary' : 'outline'}
                     size="lg"
                     fullWidth
-                    onClick={() => window.location.href = '/contact'}
+                    onClick={() => {
+                      const footer = document.querySelector('footer');
+                      footer?.scrollIntoView({ behavior: 'smooth' });
+                    }}
                   >
                     Get Started
                   </Button>

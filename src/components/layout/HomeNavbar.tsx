@@ -26,7 +26,7 @@ const HomeNavbar: React.FC = () => {
     { name: 'Digital Marketing', href: '/marketing' },
     { 
       name: 'Contact', 
-      href: '#', 
+      href: '#contact', 
       onClick: () => {
         const footer = document.querySelector('footer');
         footer?.scrollIntoView({ behavior: 'smooth' });
