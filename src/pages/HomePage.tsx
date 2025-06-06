@@ -13,7 +13,7 @@ const HomePage = () => {
       title: 'Booking System',
       icon: Users,
       description: 'Enterprise booking platform with SEO optimization',
-      image: '/booking slide.png',
+      image: '/Booking Slide.png',
       path: '/booking'
     },
     {
