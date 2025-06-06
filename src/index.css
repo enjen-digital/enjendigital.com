@@ -96,3 +96,85 @@ section.animate-fade-in {
   animation: glow 4s infinite ease-in-out;
   font-weight: 600;
 }
+
+/* 3D Slideshow Transitions */
+.slideshow-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.slide-item {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.slide-enter {
+  transform: rotateY(-90deg) scale(0.8);
+  opacity: 0;
+}
+
+.slide-enter-active {
+  transform: rotateY(0deg) scale(1);
+  opacity: 1;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide-exit {
+  transform: rotateY(0deg) scale(1);
+  opacity: 1;
+}
+
+.slide-exit-active {
+  transform: rotateY(90deg) scale(0.8);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Floating animation for cards */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(2deg);
+  }
+}
+
+.floating-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Shimmer effect for active card */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-effect {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Pulse effect for timer bar */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
