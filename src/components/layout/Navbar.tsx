@@ -80,10 +80,7 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
             <div className="flex gap-4">
               <Button
                 variant="outline"
-                onClick={() => {
-                  const footer = document.querySelector('footer');
-                  footer?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => window.location.href = '/contact'}
                 className={location.pathname === '/marketing' ? 'text-white border-white hover:bg-white hover:text-gray-900' : ''}
               >
                 Contact Us
@@ -127,10 +124,7 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
               <Button
                 variant="outline"
                 fullWidth
-                onClick={() => {
-                  const footer = document.querySelector('footer');
-                  footer?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => window.location.href = '/contact'}
                 className={location.pathname === '/marketing' ? 'text-white border-white hover:bg-white hover:text-gray-900' : ''}
               >
                 Contact Us
