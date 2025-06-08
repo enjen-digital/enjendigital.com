@@ -128,7 +128,7 @@ const HomePage = () => {
           <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12">
             <div className="lg:w-1/2">
               <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight text-center lg:text-left">
-                Static Marketing & Digital Transformation
+                Premium Marketing & Digital Transformation
               </h1>
               <p className="text-base sm:text-xl text-gray-300 mb-3 sm:mb-4 max-w-2xl text-center lg:text-left">
                 EnJen Digital is a premier web design and digital marketing agency specializing in creating impactful online experiences and driving business growth.
