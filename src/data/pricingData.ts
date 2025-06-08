@@ -25,6 +25,7 @@ export const pricingTiers = [
     features: [
       'Online Booking System',
       'Professional Website',
+      'Search Engine Optimization',
       'Client Management',
       'Automated Reminders',
       'Mobile App Access',
