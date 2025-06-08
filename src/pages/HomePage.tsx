@@ -131,8 +131,8 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="lg:w-1/2">
-              <div className="relative bg-gray-800 overflow-hidden shadow-2xl h-[250px] sm:h-[400px] rounded-lg">
+            <div className="lg:w-1/2 w-full">
+              <div className="relative bg-gray-800 overflow-hidden shadow-2xl h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px] rounded-lg mx-auto max-w-md sm:max-w-none">
                 {industries.map((industry, index) => (
                   <div
                     key={index}
@@ -147,7 +147,7 @@ const HomePage = () => {
                     <img
                       src={industry.image}
                       alt={industry.title}
-                      className={`w-full h-full object-cover ${activeCard === index ? 'slow-zoom' : ''}`}
+                      className={`w-full h-full object-contain sm:object-cover ${activeCard === index ? 'slow-zoom' : ''}`}
                       loading="lazy"
                       onError={(e) => {
                         console.error(`Failed to load image: ${industry.image}`);
@@ -157,12 +157,25 @@ const HomePage = () => {
                     {/* Fallback content if image fails to load */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center opacity-0 transition-opacity duration-300">
                       <div className="text-center text-white p-4">
-                        <div className="text-2xl font-bold mb-2">{industry.title}</div>
-                        <div className="text-sm opacity-90">{industry.description}</div>
+                        <div className="text-lg sm:text-2xl font-bold mb-2">{industry.title}</div>
+                        <div className="text-xs sm:text-sm opacity-90">{industry.description}</div>
                       </div>
                     </div>
                   </div>
                 ))}
+                
+                {/* Mobile indicators */}
+                <div className="absolute bottom-2 left-0 right-0 flex justify-center space-x-2 sm:hidden">
+                  {industries.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveCard(index)}
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        activeCard === index ? 'bg-white' : 'bg-white/50'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
