@@ -225,7 +225,7 @@ const HomePage = () => {
       </section>
 
       {/* Services Grid */}
-      <div className="py-10 sm:py-20 bg-white">
+      <div className="py-10 sm:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <Link 
