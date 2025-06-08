@@ -31,7 +31,6 @@ export const pricingTiers = [
       'Mobile App Access',
       'Custom Domain',
       'Sales Analytics',
-      'Email Support'
     ],
     url: 'https://buy.stripe.com/single-seat'
   },
