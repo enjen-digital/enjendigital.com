@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap, Check, LineChart, ShoppingCart, TrendingUp } from 'lucide-react';
+import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap, Check, LineChart, ShoppingCart, TrendingUp, Calendar, Search } from 'lucide-react';
 import Button from '../components/ui/Button';
 import HomeNavbar from '../components/layout/HomeNavbar';
 import Footer from '../components/layout/Footer';
@@ -185,24 +185,24 @@ const HomePage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:divide-x lg:divide-gray-300 gap-6 lg:gap-0">
             {[
               {
-                icon: Star,
-                title: 'Proven Track Record',
-                description: 'Over 15 years of experience delivering successful digital solutions across multiple industries.'
-              },
-              {
-                icon: Award,
-                title: 'Results-Driven Approach',
-                description: 'We focus on delivering measurable results that directly impact your business growth.'
-              },
-              {
-                icon: Users,
-                title: 'Dedicated Support',
-                description: 'Personal account manager and responsive support team available when you need them.'
+                icon: Globe,
+                title: 'Web Design',
+                description: 'Custom website development with responsive design and SEO optimization to establish your professional online presence.'
               },
               {
                 icon: TrendingUp,
-                title: 'Data-Driven Strategy',
-                description: 'Strategic decisions backed by analytics and industry insights for maximum impact.'
+                title: 'Digital Marketing',
+                description: 'Comprehensive marketing strategies including SEO, social media, and PPC campaigns to drive growth and visibility.'
+              },
+              {
+                icon: Calendar,
+                title: 'Booking Systems',
+                description: 'Advanced appointment scheduling and management platforms designed specifically for service-based businesses.'
+              },
+              {
+                icon: ShoppingCart,
+                title: 'E-Commerce',
+                description: 'Complete online store solutions with payment processing, inventory management, and conversion optimization.'
               }
             ].map((item, index) => {
               const Icon = item.icon;
