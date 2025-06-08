@@ -65,7 +65,6 @@ export const pricingTiers = [
       'Enterprise Analytics',
       'Dedicated Account Manager',
       'Custom Integration Support',
-      'Staff Training Program',
       'Priority Phone Support'
     ],
     url: 'https://buy.stripe.com/enterprise'
