@@ -57,7 +57,12 @@ const HomeNavbar: React.FC = () => {
               <a 
                 key={link.name}
                 href={link.href}
-                onClick={link.onClick}
+                onClick={(e) => {
+                  if (link.onClick) {
+                    e.preventDefault();
+                    link.onClick();
+                  }
+                }}
                 className={`font-medium transition-colors text-sm ${
                   isScrolled 
                     ? 'text-gray-700 hover:text-primary-600' 
@@ -98,10 +103,9 @@ const HomeNavbar: React.FC = () => {
                     : 'text-white hover:text-primary-300'
                 }`}
                 onClick={(e) => {
-                  if (link.name === 'Contact') {
+                  if (link.onClick) {
                     e.preventDefault();
-                    const footer = document.querySelector('footer');
-                    footer?.scrollIntoView({ behavior: 'smooth' });
+                    link.onClick();
                   }
                   setIsMenuOpen(false);
                 }}
