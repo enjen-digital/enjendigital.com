@@ -61,6 +61,7 @@ export const pricingTiers = [
       'Everything in Shop Package',
       'Multiple Locations',
       'Cross-Location Booking',
+      'Google Business Profile Management',
       'Enterprise Analytics',
       'Dedicated Account Manager',
       'Custom Integration Support',
