@@ -3,6 +3,7 @@ import { ArrowRight, BarChart, Globe, Users, Shield, Star, Award, Zap, Check, Li
 import Button from '../components/ui/Button';
 import HomeNavbar from '../components/layout/HomeNavbar';
 import Footer from '../components/layout/Footer';
+import SEOHead from '../components/SEO/SEOHead';
 import { useState, useEffect } from 'react';
 
 const HomePage = () => {
@@ -77,8 +78,48 @@ const HomePage = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "EnJen Digital",
+    "url": "https://enjendigital.com",
+    "logo": "https://enjendigital.com/enjen-logo-black.png",
+    "description": "Premier web design and digital marketing agency specializing in SEO-optimized solutions, booking systems, and digital transformation.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2800 E. Enterprise Ave, Suite 333",
+      "addressLocality": "Appleton",
+      "addressRegion": "WI",
+      "addressCountry": "US"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-833-575-8448",
+      "contactType": "customer service",
+      "email": "support@enjendigital.com"
+    },
+    "sameAs": [
+      "https://www.facebook.com/enjendigital",
+      "https://www.instagram.com/enjen_digital/",
+      "https://www.linkedin.com/company/enjen-digital"
+    ],
+    "services": [
+      "Web Design",
+      "Digital Marketing",
+      "SEO Optimization",
+      "Booking Systems",
+      "E-Commerce Solutions"
+    ]
+  };
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="EnJen Digital - Web Design & Digital Marketing Agency | SEO Solutions"
+        description="EnJen Digital - Premier web design and digital marketing agency specializing in SEO-optimized solutions. Transform your online presence with our booking systems and marketing expertise."
+        keywords="digital marketing agency, SEO optimization, web design, booking system, digital transformation, online marketing, business growth, website development, social media marketing"
+        canonicalUrl="https://enjendigital.com"
+        structuredData={structuredData}
+      />
       <HomeNavbar />
       
       {/* Hero Section */}

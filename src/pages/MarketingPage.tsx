@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import Button from '../components/ui/Button';
+import SEOHead from '../components/SEO/SEOHead';
 import { Check, ArrowRight, BarChart, Globe, Users, TrendingUp, Search, Share2, Mail, LineChart, Target, Megaphone } from 'lucide-react';
 
 const MarketingPage = () => {
@@ -138,8 +139,71 @@ const MarketingPage = () => {
     }
   ];
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Digital Marketing Services",
+    "description": "Comprehensive digital marketing solutions including SEO, social media marketing, PPC advertising, content marketing, and brand strategy.",
+    "provider": {
+      "@type": "Organization",
+      "name": "EnJen Digital",
+      "url": "https://enjendigital.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2800 E. Enterprise Ave, Suite 333",
+        "addressLocality": "Appleton",
+        "addressRegion": "WI",
+        "addressCountry": "US"
+      }
+    },
+    "serviceType": "Digital Marketing",
+    "areaServed": "United States",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Digital Marketing Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Starter Package",
+            "description": "Perfect for small businesses just getting started"
+          },
+          "price": "499",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Growth Package",
+            "description": "Ideal for businesses ready to expand their reach"
+          },
+          "price": "999",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Enterprise Package",
+            "description": "For businesses needing comprehensive marketing solutions"
+          },
+          "price": "1999",
+          "priceCurrency": "USD"
+        }
+      ]
+    }
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
+      <SEOHead
+        title="Digital Marketing Agency | SEO, Web Design & Social Media | EnJen Digital"
+        description="Drive business growth with EnJen Digital's comprehensive marketing solutions. SEO optimization, social media marketing, PPC advertising, and web design services."
+        keywords="digital marketing agency, SEO services, social media marketing, PPC advertising, web design, content marketing, brand strategy, online marketing, search engine optimization"
+        canonicalUrl="https://enjendigital.com/marketing"
+        structuredData={structuredData}
+      />
       <Navbar />
       
       <main className="pt-32 pb-20">
