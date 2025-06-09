@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import { X, Calendar, Users, ShoppingCart } from 'lucide-react';
+import { addToList, verifyEmail } from '../../lib/hunter';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -17,24 +18,56 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
     productInterest: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic will be implemented later
-    console.log('Consultation form submitted:', formData);
-    onClose();
-    // Reset form
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      company: '',
-      productInterest: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Verify email first
+      const emailVerification = await verifyEmail(formData.email);
+      
+      if (emailVerification.result === 'undeliverable') {
+        throw new Error('Please provide a valid email address');
+      }
+
+      // Add to Hunter.io leads
+      await addToList(
+        formData.email,
+        formData.firstName,
+        formData.lastName,
+        formData.company,
+        formData.productInterest
+      );
+
+      setSubmitStatus('success');
+      
+      // Reset form after successful submission
+      setTimeout(() => {
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          company: '',
+          productInterest: '',
+          message: ''
+        });
+        setSubmitStatus('idle');
+        onClose();
+      }, 2000);
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -231,12 +264,23 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
           </div>
           
           <div className="flex flex-col sm:flex-row gap-3">
+            {submitStatus === 'success' && (
+              <div className="w-full p-3 bg-green-50 border border-green-200 rounded-md text-green-800 text-sm mb-3">
+                ✓ Thank you! We'll contact you within 24 hours to schedule your consultation.
+              </div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="w-full p-3 bg-red-50 border border-red-200 rounded-md text-red-800 text-sm mb-3">
+                ✗ There was an error submitting your request. Please try again or contact us directly.
+              </div>
+            )}
             <Button 
               type="submit" 
               size="lg"
               className="flex-1"
+              disabled={isSubmitting}
             >
-              Schedule Consultation
+              {isSubmitting ? 'Submitting...' : 'Schedule Consultation'}
             </Button>
             <Button 
               type="button"
@@ -244,6 +288,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
               size="lg"
               onClick={onClose}
               className="flex-1 sm:flex-initial"
+              disabled={isSubmitting}
             >
               Cancel
             </Button>

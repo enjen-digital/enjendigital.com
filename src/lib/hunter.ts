@@ -1,4 +1,4 @@
-const HUNTER_API_KEY = import.meta.env.VITE_HUNTER_API_KEY;
+const HUNTER_API_KEY = import.meta.env.VITE_HUNTER_API_KEY || 'your-hunter-api-key-here';
 
 export async function verifyEmail(email: string) {
   if (!HUNTER_API_KEY) {
@@ -28,7 +28,7 @@ export async function verifyEmail(email: string) {
   }
 }
 
-export async function addToList(email: string, firstName?: string, lastName?: string) {
+export async function addToList(email: string, firstName?: string, lastName?: string, company?: string, productInterest?: string) {
   if (!HUNTER_API_KEY) {
     throw new Error('Hunter API key not configured');
   }
@@ -43,7 +43,18 @@ export async function addToList(email: string, firstName?: string, lastName?: st
       email,
       first_name: firstName || '',
       last_name: lastName || '',
-      source: 'Website Demo Form'
+      company: company || '',
+      source: 'Website Consultation Form',
+      attributes: [
+        {
+          name: 'product_interest',
+          value: productInterest || ''
+        },
+        {
+          name: 'lead_source',
+          value: 'consultation_form'
+        }
+      ]
     };
 
     const response = await fetch(
