@@ -4,10 +4,12 @@ import Button from '../components/ui/Button';
 import HomeNavbar from '../components/layout/HomeNavbar';
 import Footer from '../components/layout/Footer';
 import SEOHead from '../components/SEO/SEOHead';
+import ConsultationModal from '../components/ui/ConsultationModal';
 import { useState, useEffect } from 'react';
 
 const HomePage = () => {
   const [activeCard, setActiveCard] = useState(0);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -389,10 +391,7 @@ const HomePage = () => {
             </p>
             <Button 
               size="lg"
-              onClick={() => {
-                const footer = document.querySelector('footer');
-                footer?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => setIsConsultationModalOpen(true)}
               className="bg-black text-white hover:bg-gray-800"
             >
               Schedule a Consultation
@@ -402,6 +401,10 @@ const HomePage = () => {
       </div>
 
       <Footer />
+      <ConsultationModal 
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
+      />
     </div>
   );
 };
