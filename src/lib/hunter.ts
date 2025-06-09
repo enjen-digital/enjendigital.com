@@ -114,7 +114,7 @@ export async function addToList(email: string, firstName?: string, lastName?: st
       productInterest: productInterest || '',
       timestamp: new Date().toISOString(),
       source: 'Website Consultation Form',
-      error: error.message
+      error: error instanceof Error ? error.message : 'Unknown error'
     };
     
     // Store in localStorage as fallback
@@ -128,92 +128,21 @@ export async function addToList(email: string, firstName?: string, lastName?: st
 }
 
 export async function addToNewsletter(email: string) {
-  if (!HUNTER_API_KEY || HUNTER_API_KEY === 'your-hunter-api-key-here') {
-    console.warn('Hunter API key not configured, storing newsletter subscription locally');
-    // Store newsletter subscription locally when API key is not available
-    const subscriptionData = {
-      email,
-      timestamp: new Date().toISOString(),
-      source: 'Website Newsletter Subscription'
-    };
-    
-    // Store in localStorage for now
-    const existingSubscriptions = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
-    existingSubscriptions.push(subscriptionData);
-    localStorage.setItem('newsletter_subscriptions', JSON.stringify(existingSubscriptions));
-    
-    console.log('Newsletter subscription stored locally:', subscriptionData);
-    return subscriptionData;
-  }
-
-  try {
-    // Validate required parameters
-    if (!email) {
-      throw new Error('Email is required');
-    }
-
-    const payload = {
-      email,
-      source: 'Website Newsletter Subscription',
-      confidence_score: 100
-    };
-
-    console.log('Sending newsletter subscription to Hunter.io:', payload);
-
-    const response = await fetch(
-      `https://api.hunter.io/v2/leads?api_key=${HUNTER_API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'User-Agent': 'EnJenDigital/1.0'
-        },
-        body: JSON.stringify(payload),
-      }
-    );
-
-    const responseText = await response.text();
-    console.log('Hunter.io newsletter response:', response.status, responseText);
-
-    if (!response.ok) {
-      let errorData;
-      try {
-        errorData = JSON.parse(responseText);
-      } catch {
-        errorData = { message: responseText };
-      }
-      
-      console.error('Newsletter subscription failed:', {
-        status: response.status,
-        statusText: response.statusText,
-        error: errorData,
-        payload
-      });
-      
-      throw new Error(`Failed to add newsletter subscription: ${errorData.message || response.statusText}`);
-    }
-
-    const data = JSON.parse(responseText);
-    console.log('Successfully added newsletter subscription to Hunter.io:', data);
-    return data.data;
-  } catch (error) {
-    console.error('Hunter.io newsletter API error:', error);
-    
-    // Fallback: Store newsletter subscription locally when API fails
-    console.warn('Falling back to local storage for newsletter subscription due to API error');
-    const subscriptionData = {
-      email,
-      timestamp: new Date().toISOString(),
-      source: 'Website Newsletter Subscription',
-      error: error.message
-    };
-    
-    // Store in localStorage as fallback
-    const existingSubscriptions = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
-    existingSubscriptions.push(subscriptionData);
-    localStorage.setItem('newsletter_subscriptions', JSON.stringify(existingSubscriptions));
-    
-    console.log('Newsletter subscription stored locally as fallback:', subscriptionData);
-    return subscriptionData;
-  }
+  // Always fall back to local storage for newsletter subscriptions
+  // since Hunter.io API calls from browser are blocked by CORS
+  console.warn('Hunter.io API calls from browser are blocked by CORS, storing newsletter subscription locally');
+  
+  const subscriptionData = {
+    email,
+    timestamp: new Date().toISOString(),
+    source: 'Website Newsletter Subscription'
+  };
+  
+  // Store in localStorage
+  const existingSubscriptions = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
+  existingSubscriptions.push(subscriptionData);
+  localStorage.setItem('newsletter_subscriptions', JSON.stringify(existingSubscriptions));
+  
+  console.log('Newsletter subscription stored locally:', subscriptionData);
+  return subscriptionData;
 }
