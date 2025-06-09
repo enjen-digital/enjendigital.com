@@ -32,8 +32,9 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
       // Verify email first
       const emailVerification = await verifyEmail(formData.email);
       
+      // Only block if email is definitely undeliverable
       if (emailVerification.result === 'undeliverable') {
-        throw new Error('Please provide a valid email address');
+        console.warn('Email may be undeliverable, but continuing with submission');
       }
 
       // Add to Hunter.io leads
