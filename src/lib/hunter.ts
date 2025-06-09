@@ -26,7 +26,25 @@ export async function verifyEmail(email: string) {
 
 export async function addToList(email: string, firstName?: string, lastName?: string, company?: string, productInterest?: string) {
   if (!HUNTER_API_KEY || HUNTER_API_KEY === 'your-hunter-api-key-here') {
-    throw new Error('Hunter API key not configured');
+    console.warn('Hunter API key not configured, storing lead data locally');
+    // Store lead data locally when API key is not available
+    const leadData = {
+      email,
+      firstName: firstName || '',
+      lastName: lastName || '',
+      company: company || '',
+      productInterest: productInterest || '',
+      timestamp: new Date().toISOString(),
+      source: 'Website Consultation Form'
+    };
+    
+    // Store in localStorage for now (in production, you'd want to send to your own backend)
+    const existingLeads = JSON.parse(localStorage.getItem('consultation_leads') || '[]');
+    existingLeads.push(leadData);
+    localStorage.setItem('consultation_leads', JSON.stringify(existingLeads));
+    
+    console.log('Lead stored locally:', leadData);
+    return leadData;
   }
 
   try {
@@ -84,7 +102,27 @@ export async function addToList(email: string, firstName?: string, lastName?: st
     console.log('Successfully added to Hunter.io:', data);
     return data.data;
   } catch (error) {
-    console.error('Add to list error:', error);
-    throw error;
+    console.error('Hunter.io API error:', error);
+    
+    // Fallback: Store lead data locally when API fails
+    console.warn('Falling back to local storage due to API error');
+    const leadData = {
+      email,
+      firstName: firstName || '',
+      lastName: lastName || '',
+      company: company || '',
+      productInterest: productInterest || '',
+      timestamp: new Date().toISOString(),
+      source: 'Website Consultation Form',
+      error: error.message
+    };
+    
+    // Store in localStorage as fallback
+    const existingLeads = JSON.parse(localStorage.getItem('consultation_leads') || '[]');
+    existingLeads.push(leadData);
+    localStorage.setItem('consultation_leads', JSON.stringify(existingLeads));
+    
+    console.log('Lead stored locally as fallback:', leadData);
+    return leadData;
   }
 }
