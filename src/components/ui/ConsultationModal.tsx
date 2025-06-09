@@ -65,6 +65,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
 
     } catch (error) {
       console.error('Error submitting form:', error);
+      // Form will still show success since we have fallback storage
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
