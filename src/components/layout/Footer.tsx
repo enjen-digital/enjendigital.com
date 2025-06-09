@@ -1,8 +1,12 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { addToNewsletter, verifyEmail } from '../../lib/hunter';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const [newsletterEmail, setNewsletterEmail] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
   
   const footerLinks = [
     {
@@ -15,6 +19,46 @@ const Footer: React.FC = () => {
       ]
     }
   ];
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) return;
+    
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Verify email first
+      const emailVerification = await verifyEmail(newsletterEmail);
+      
+      // Only warn if email is definitely undeliverable
+      if (emailVerification.result === 'undeliverable') {
+        console.warn('Email may be undeliverable, but continuing with newsletter subscription');
+      }
+
+      // Add to newsletter list
+      await addToNewsletter(newsletterEmail);
+
+      setSubmitStatus('success');
+      setNewsletterEmail('');
+      
+      // Reset status after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 3000);
+
+    } catch (error) {
+      console.error('Error submitting newsletter subscription:', error);
+      setSubmitStatus('error');
+      
+      // Reset error status after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 3000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   
   return (
     <footer className="bg-gray-900 text-white">
@@ -67,23 +111,34 @@ const Footer: React.FC = () => {
             <p className="text-gray-400 mb-4 text-sm">
               Get the latest digital marketing tips and exclusive promotions.
             </p>
-            <form className="space-y-3" onSubmit={(e) => {
-              e.preventDefault();
-              (e.target as HTMLFormElement).reset();
-            }}>
+            <form className="space-y-3" onSubmit={handleNewsletterSubmit}>
               <input
                 type="email"
                 name="email"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Enter your email"
                 className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 required
+                disabled={isSubmitting}
               />
               <button
                 type="submit"
-                className="w-full px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors"
+                className="w-full px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={isSubmitting || !newsletterEmail.trim()}
               >
-                Subscribe
+                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
               </button>
+              {submitStatus === 'success' && (
+                <p className="text-green-400 text-sm">
+                  ✓ Thank you for subscribing to our newsletter!
+                </p>
+              )}
+              {submitStatus === 'error' && (
+                <p className="text-red-400 text-sm">
+                  ✗ There was an error. Please try again.
+                </p>
+              )}
             </form>
           </div>
           
