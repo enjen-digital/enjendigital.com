@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import { X, Calendar, Users, ShoppingCart } from 'lucide-react';
-import { saveConsultationLead } from '../../lib/hunter';
+import { saveConsultationForm } from '../../lib/forms';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -26,21 +26,12 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
 
     try {
-      // Save consultation lead locally
-      await saveConsultationLead(
-        formData.email,
-        formData.firstName,
-        formData.lastName,
-        formData.company,
-        formData.productInterest
-      );
-
+      saveConsultationForm(formData);
       setSubmitStatus('success');
       
-      // Reset form after successful submission
+      // Reset form and close modal after 2 seconds
       setTimeout(() => {
         setFormData({
           firstName: '',
@@ -56,13 +47,8 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
       }, 2000);
 
     } catch (error) {
-      console.error('Error saving consultation request:', error);
       setSubmitStatus('error');
-      
-      // Reset error status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 3000);
+      setTimeout(() => setSubmitStatus('idle'), 3000);
     } finally {
       setIsSubmitting(false);
     }
@@ -70,10 +56,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const productOptions = [
@@ -101,10 +84,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
     <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-2xl p-8 mx-4 border border-gray-100 max-h-[90vh] overflow-y-auto">
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
-        >
+        <button onClick={onClose} className="absolute right-4 top-4 text-gray-400 hover:text-gray-600">
           <X size={24} />
         </button>
 
@@ -264,12 +244,12 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
           <div className="flex flex-col sm:flex-row gap-3">
             {submitStatus === 'success' && (
               <div className="w-full p-3 bg-green-50 border border-green-200 rounded-md text-green-800 text-sm mb-3">
-                ✓ Thank you for your interest! We'll contact you within 24 hours to schedule your consultation.
+                ✓ Thank you! We'll contact you within 24 hours.
               </div>
             )}
             {submitStatus === 'error' && (
               <div className="w-full p-3 bg-red-50 border border-red-200 rounded-md text-red-800 text-sm mb-3">
-                ✗ There was an error saving your request. Please try again or contact us directly at support@enjendigital.com.
+                ✗ Error saving request. Please try again.
               </div>
             )}
             <Button 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
-import { saveNewsletterSubscription } from '../../lib/hunter';
+import { saveNewsletterForm } from '../../lib/forms';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -25,28 +25,15 @@ const Footer: React.FC = () => {
     if (!newsletterEmail.trim()) return;
     
     setIsSubmitting(true);
-    setSubmitStatus('idle');
 
     try {
-      // Save newsletter subscription locally
-      await saveNewsletterSubscription(newsletterEmail);
-
+      saveNewsletterForm(newsletterEmail);
       setSubmitStatus('success');
       setNewsletterEmail('');
-      
-      // Reset status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 3000);
-
+      setTimeout(() => setSubmitStatus('idle'), 3000);
     } catch (error) {
-      console.error('Error saving newsletter subscription:', error);
       setSubmitStatus('error');
-      
-      // Reset error status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 3000);
+      setTimeout(() => setSubmitStatus('idle'), 3000);
     } finally {
       setIsSubmitting(false);
     }
@@ -123,12 +110,12 @@ const Footer: React.FC = () => {
               </button>
               {submitStatus === 'success' && (
                 <p className="text-green-400 text-sm">
-                  ✓ Thank you for subscribing! We'll keep you updated with our latest news.
+                  ✓ Thank you for subscribing!
                 </p>
               )}
               {submitStatus === 'error' && (
                 <p className="text-red-400 text-sm">
-                  ✗ There was an error saving your subscription. Please try again.
+                  ✗ Error saving subscription. Please try again.
                 </p>
               )}
             </form>
