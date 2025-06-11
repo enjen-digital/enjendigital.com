@@ -1,34 +1,30 @@
-const HUNTER_API_KEY = import.meta.env.VITE_HUNTER_API_KEY || 'your-hunter-api-key-here';
+// Simple local storage utilities for form submissions
 
-export async function verifyEmail(email: string) {
-  if (!HUNTER_API_KEY || HUNTER_API_KEY === 'your-hunter-api-key-here') {
-    console.warn('Hunter API key not configured, skipping email verification');
-    return { result: 'deliverable' }; // Skip verification if no API key
-  }
-
-  try {
-    const response = await fetch(
-      `https://api.hunter.io/v2/email-verifier?email=${encodeURIComponent(email)}&api_key=${HUNTER_API_KEY}`
-    );
-
-    if (!response.ok) {
-      console.warn('Email verification failed, continuing without verification');
-      return { result: 'deliverable' }; // Continue without verification on error
-    }
-
-    const data = await response.json();
-    return data.data;
-  } catch (error) {
-    console.warn('Email verification error, continuing without verification:', error);
-    return { result: 'deliverable' }; // Continue without verification on error
-  }
+interface LeadData {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  company?: string;
+  productInterest?: string;
+  timestamp: string;
+  source: string;
 }
 
-export async function addToList(email: string, firstName?: string, lastName?: string, company?: string, productInterest?: string) {
-  if (!HUNTER_API_KEY || HUNTER_API_KEY === 'your-hunter-api-key-here') {
-    console.warn('Hunter API key not configured, storing lead data locally');
-    // Store lead data locally when API key is not available
-    const leadData = {
+interface NewsletterData {
+  email: string;
+  timestamp: string;
+  source: string;
+}
+
+export async function saveConsultationLead(
+  email: string, 
+  firstName?: string, 
+  lastName?: string, 
+  company?: string, 
+  productInterest?: string
+) {
+  try {
+    const leadData: LeadData = {
       email,
       firstName: firstName || '',
       lastName: lastName || '',
@@ -38,111 +34,104 @@ export async function addToList(email: string, firstName?: string, lastName?: st
       source: 'Website Consultation Form'
     };
     
-    // Store in localStorage for now (in production, you'd want to send to your own backend)
+    // Store in localStorage
     const existingLeads = JSON.parse(localStorage.getItem('consultation_leads') || '[]');
     existingLeads.push(leadData);
     localStorage.setItem('consultation_leads', JSON.stringify(existingLeads));
     
-    console.log('Lead stored locally:', leadData);
+    console.log('Consultation lead saved locally:', leadData);
     return leadData;
-  }
-
-  try {
-    // Validate required parameters
-    if (!email) {
-      throw new Error('Email is required');
-    }
-
-    const payload = {
-      email,
-      first_name: firstName || '',
-      last_name: lastName || '',
-      company: company || '',
-      position: productInterest || '',
-      source: 'Website Consultation Form',
-      confidence_score: 100
-    };
-
-    console.log('Sending to Hunter.io:', payload);
-
-    const response = await fetch(
-      `https://api.hunter.io/v2/leads?api_key=${HUNTER_API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'User-Agent': 'EnJenDigital/1.0'
-        },
-        body: JSON.stringify(payload),
-      }
-    );
-
-    const responseText = await response.text();
-    console.log('Hunter.io response:', response.status, responseText);
-
-    if (!response.ok) {
-      let errorData;
-      try {
-        errorData = JSON.parse(responseText);
-      } catch {
-        errorData = { message: responseText };
-      }
-      
-      console.error('Add to list failed:', {
-        status: response.status,
-        statusText: response.statusText,
-        error: errorData,
-        payload
-      });
-      
-      throw new Error(`Failed to add to list: ${errorData.message || response.statusText}`);
-    }
-
-    const data = JSON.parse(responseText);
-    console.log('Successfully added to Hunter.io:', data);
-    return data.data;
   } catch (error) {
-    console.error('Hunter.io API error:', error);
-    
-    // Fallback: Store lead data locally when API fails
-    console.warn('Falling back to local storage due to API error');
-    const leadData = {
-      email,
-      firstName: firstName || '',
-      lastName: lastName || '',
-      company: company || '',
-      productInterest: productInterest || '',
-      timestamp: new Date().toISOString(),
-      source: 'Website Consultation Form',
-      error: error instanceof Error ? error.message : 'Unknown error'
-    };
-    
-    // Store in localStorage as fallback
-    const existingLeads = JSON.parse(localStorage.getItem('consultation_leads') || '[]');
-    existingLeads.push(leadData);
-    localStorage.setItem('consultation_leads', JSON.stringify(existingLeads));
-    
-    console.log('Lead stored locally as fallback:', leadData);
-    return leadData;
+    console.error('Error saving consultation lead:', error);
+    throw new Error('Failed to save consultation request');
   }
 }
 
-export async function addToNewsletter(email: string) {
-  // Always fall back to local storage for newsletter subscriptions
-  // since Hunter.io API calls from browser are blocked by CORS
-  console.warn('Hunter.io API calls from browser are blocked by CORS, storing newsletter subscription locally');
-  
-  const subscriptionData = {
-    email,
-    timestamp: new Date().toISOString(),
-    source: 'Website Newsletter Subscription'
-  };
-  
-  // Store in localStorage
-  const existingSubscriptions = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
-  existingSubscriptions.push(subscriptionData);
-  localStorage.setItem('newsletter_subscriptions', JSON.stringify(existingSubscriptions));
-  
-  console.log('Newsletter subscription stored locally:', subscriptionData);
-  return subscriptionData;
+export async function saveNewsletterSubscription(email: string) {
+  try {
+    const subscriptionData: NewsletterData = {
+      email,
+      timestamp: new Date().toISOString(),
+      source: 'Website Newsletter Subscription'
+    };
+    
+    // Store in localStorage
+    const existingSubscriptions = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
+    existingSubscriptions.push(subscriptionData);
+    localStorage.setItem('newsletter_subscriptions', JSON.stringify(existingSubscriptions));
+    
+    console.log('Newsletter subscription saved locally:', subscriptionData);
+    return subscriptionData;
+  } catch (error) {
+    console.error('Error saving newsletter subscription:', error);
+    throw new Error('Failed to save newsletter subscription');
+  }
+}
+
+// Utility functions to retrieve stored data
+export function getConsultationLeads(): LeadData[] {
+  try {
+    return JSON.parse(localStorage.getItem('consultation_leads') || '[]');
+  } catch {
+    return [];
+  }
+}
+
+export function getNewsletterSubscriptions(): NewsletterData[] {
+  try {
+    return JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
+  } catch {
+    return [];
+  }
+}
+
+// Utility to export data as CSV
+export function exportLeadsAsCSV() {
+  const leads = getConsultationLeads();
+  if (leads.length === 0) return;
+
+  const headers = ['Email', 'First Name', 'Last Name', 'Company', 'Product Interest', 'Timestamp', 'Source'];
+  const csvContent = [
+    headers.join(','),
+    ...leads.map(lead => [
+      lead.email,
+      lead.firstName,
+      lead.lastName,
+      lead.company,
+      lead.productInterest,
+      lead.timestamp,
+      lead.source
+    ].join(','))
+  ].join('\n');
+
+  const blob = new Blob([csvContent], { type: 'text/csv' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'consultation_leads.csv';
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
+
+export function exportNewsletterAsCSV() {
+  const subscriptions = getNewsletterSubscriptions();
+  if (subscriptions.length === 0) return;
+
+  const headers = ['Email', 'Timestamp', 'Source'];
+  const csvContent = [
+    headers.join(','),
+    ...subscriptions.map(sub => [
+      sub.email,
+      sub.timestamp,
+      sub.source
+    ].join(','))
+  ].join('\n');
+
+  const blob = new Blob([csvContent], { type: 'text/csv' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'newsletter_subscriptions.csv';
+  a.click();
+  window.URL.revokeObjectURL(url);
 }

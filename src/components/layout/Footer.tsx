@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
-import { addToNewsletter, verifyEmail } from '../../lib/hunter';
+import { saveNewsletterSubscription } from '../../lib/hunter';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -28,16 +28,8 @@ const Footer: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // Verify email first
-      const emailVerification = await verifyEmail(newsletterEmail);
-      
-      // Only warn if email is definitely undeliverable
-      if (emailVerification.result === 'undeliverable') {
-        console.warn('Email may be undeliverable, but continuing with newsletter subscription');
-      }
-
-      // Add to newsletter list
-      await addToNewsletter(newsletterEmail);
+      // Save newsletter subscription locally
+      await saveNewsletterSubscription(newsletterEmail);
 
       setSubmitStatus('success');
       setNewsletterEmail('');
@@ -48,7 +40,7 @@ const Footer: React.FC = () => {
       }, 3000);
 
     } catch (error) {
-      console.error('Error submitting newsletter subscription:', error);
+      console.error('Error saving newsletter subscription:', error);
       setSubmitStatus('error');
       
       // Reset error status after 3 seconds
@@ -131,12 +123,12 @@ const Footer: React.FC = () => {
               </button>
               {submitStatus === 'success' && (
                 <p className="text-green-400 text-sm">
-                  ✓ Thank you for subscribing to our newsletter!
+                  ✓ Thank you for subscribing! We'll keep you updated with our latest news.
                 </p>
               )}
               {submitStatus === 'error' && (
                 <p className="text-red-400 text-sm">
-                  ✗ There was an error. Please try again.
+                  ✗ There was an error saving your subscription. Please try again.
                 </p>
               )}
             </form>

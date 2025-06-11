@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import { X, Calendar, Users, ShoppingCart } from 'lucide-react';
-import { addToList, verifyEmail } from '../../lib/hunter';
+import { saveConsultationLead } from '../../lib/hunter';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -29,16 +29,8 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
     setSubmitStatus('idle');
 
     try {
-      // Verify email first
-      const emailVerification = await verifyEmail(formData.email);
-      
-      // Only block if email is definitely undeliverable
-      if (emailVerification.result === 'undeliverable') {
-        console.warn('Email may be undeliverable, but continuing with submission');
-      }
-
-      // Add to Hunter.io leads
-      await addToList(
+      // Save consultation lead locally
+      await saveConsultationLead(
         formData.email,
         formData.firstName,
         formData.lastName,
@@ -64,9 +56,13 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
       }, 2000);
 
     } catch (error) {
-      console.error('Error submitting form:', error);
-      // Form will still show success since we have fallback storage
+      console.error('Error saving consultation request:', error);
       setSubmitStatus('error');
+      
+      // Reset error status after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 3000);
     } finally {
       setIsSubmitting(false);
     }
@@ -268,12 +264,12 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
           <div className="flex flex-col sm:flex-row gap-3">
             {submitStatus === 'success' && (
               <div className="w-full p-3 bg-green-50 border border-green-200 rounded-md text-green-800 text-sm mb-3">
-                ✓ Thank you! We'll contact you within 24 hours to schedule your consultation.
+                ✓ Thank you for your interest! We'll contact you within 24 hours to schedule your consultation.
               </div>
             )}
             {submitStatus === 'error' && (
               <div className="w-full p-3 bg-red-50 border border-red-200 rounded-md text-red-800 text-sm mb-3">
-                ✗ There was an error submitting your request. Please try again or contact us directly.
+                ✗ There was an error saving your request. Please try again or contact us directly at support@enjendigital.com.
               </div>
             )}
             <Button 
@@ -282,7 +278,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
               className="flex-1"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Submitting...' : 'Schedule Consultation'}
+              {isSubmitting ? 'Saving...' : 'Schedule Consultation'}
             </Button>
             <Button 
               type="button"
