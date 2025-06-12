@@ -8,12 +8,12 @@ import TestimonialsSection from '../components/sections/TestimonialsSection';
 import StayConnectedSection from '../components/sections/StayConnectedSection';
 import FAQSection from '../components/sections/FAQSection';
 import ContactSection from '../components/sections/ContactSection';
-import DemoModal from '../components/ui/DemoModal';
+import ConsultationModal from '../components/ui/ConsultationModal';
 import SEOHead from '../components/SEO/SEOHead';
 import { useState, useEffect } from 'react';
 
 const BookingPage = () => {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +35,7 @@ const BookingPage = () => {
   }, []);
 
   useEffect(() => {
-    window.openDemoModal = () => setIsDemoModalOpen(true);
+    window.openDemoModal = () => setIsConsultationModalOpen(true);
   }, []);
 
   const structuredData = {
@@ -79,9 +79,9 @@ const BookingPage = () => {
         canonicalUrl="https://enjendigital.com/booking"
         structuredData={structuredData}
       />
-      <Navbar onDemoClick={() => setIsDemoModalOpen(true)} />
+      <Navbar onDemoClick={() => setIsConsultationModalOpen(true)} />
       <main>
-        <HeroSection onDemoClick={() => setIsDemoModalOpen(true)} />
+        <HeroSection onDemoClick={() => setIsConsultationModalOpen(true)} />
         <FeaturesSection />
         <TestimonialsSection />
         <StayConnectedSection />
@@ -90,9 +90,9 @@ const BookingPage = () => {
         <ContactSection />
       </main>
       <Footer />
-      <DemoModal 
-        isOpen={isDemoModalOpen}
-        onClose={() => setIsDemoModalOpen(false)}
+      <ConsultationModal 
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
       />
     </div>
   );
