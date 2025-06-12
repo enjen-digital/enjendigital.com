@@ -1,7 +1,34 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import Button from './Button';
 import { X, Calendar, Users, ShoppingCart } from 'lucide-react';
 import { saveConsultationForm } from '../../lib/forms';
+import Input from '../form-inputs/Input';
+import TextArea from '../form-inputs/TextArea';
+import RadioGroup from '../form-inputs/RadioGroup';
+import { ConsultationLead } from '../../types';
+
+const productOptions = [
+  {
+    value: 'booking',
+    label: 'Booking System',
+    icon: Calendar,
+    description: 'Online appointment scheduling and management'
+  },
+  {
+    value: 'web-design',
+    label: 'Web Design',
+    icon: Users,
+    description: 'Custom website development with SEO'
+  },
+  {
+    value: 'ecommerce',
+    label: 'E-Commerce',
+    icon: ShoppingCart,
+    description: 'Online store solutions and management'
+  }
+];
+
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -9,76 +36,46 @@ interface ConsultationModalProps {
 }
 
 const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    company: '',
-    productInterest: '',
-    message: ''
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  
+  const { register, handleSubmit, formState: { errors }, watch, setValue, reset } = useForm<ConsultationLead>({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      company: '',
+      productInterest: '',
+      notes: ''
+    },
+    mode: 'all'
+  });
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: ConsultationLead) => {
     setIsSubmitting(true);
 
     try {
-      saveConsultationForm(formData);
+      await saveConsultationForm(data);
       setSubmitStatus('success');
-      
+
       // Reset form and close modal after 2 seconds
       setTimeout(() => {
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          company: '',
-          productInterest: '',
-          message: ''
-        });
         setSubmitStatus('idle');
         onClose();
+        reset();
       }, 2000);
 
     } catch (error) {
+      console.error('Error saving consultation form:', error);
       setSubmitStatus('error');
       setTimeout(() => setSubmitStatus('idle'), 3000);
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const productOptions = [
-    {
-      value: 'booking',
-      label: 'Booking System',
-      icon: Calendar,
-      description: 'Online appointment scheduling and management'
-    },
-    {
-      value: 'web-design',
-      label: 'Web Design',
-      icon: Users,
-      description: 'Custom website development with SEO'
-    },
-    {
-      value: 'ecommerce',
-      label: 'E-Commerce',
-      icon: ShoppingCart,
-      description: 'Online store solutions and management'
-    }
-  ];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm">
@@ -98,148 +95,89 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-                First Name *
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                required
-              />
-            </div>
+            <Input
+              label="First Name"
+              name="firstName"
+              register={register}
+              error={errors?.firstName?.message}
+              rules={{
+                required: 'First name is required'
+              }}
+            />
             
-            <div>
-              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-                Last Name *
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                required
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Business Email *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-              required
+            <Input
+              label="Last Name"
+              name="lastName"
+              register={register}
+              error={errors?.lastName?.message}
+              rules={{
+                required: 'Last name is required'
+              }}
             />
           </div>
 
+          <Input
+            label="Business Email"
+            name="email"
+            type="email"
+            register={register}
+            error={errors?.email?.message}
+            rules={{
+              required: 'Email is required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Invalid email address'
+              }
+            }}
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                Phone Number *
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                required
-              />
-            </div>
+            <Input
+              label="Phone Number"
+              name="phone"
+              type="tel"
+              register={register}
+              error={errors?.phone?.message}
+              rules={{
+                required: 'Phone number is required',
+                pattern: {
+                  value: /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/,
+                  message: 'Invalid phone number'
+                }
+              }}
+            />
 
-            <div>
-              <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                Company Name
-              </label>
-              <input
-                type="text"
-                id="company"
-                name="company"
-                value={formData.company}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
-            </div>
+            <Input
+              label="Company Name"
+              name="company"
+              register={register}
+              error={errors?.company?.message}
+            />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
-              Which product are you interested in? *
-            </label>
-            <div className="grid grid-cols-1 gap-3">
-              {productOptions.map((option) => {
-                const Icon = option.icon;
-                return (
-                  <label
-                    key={option.value}
-                    className={`relative flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
-                      formData.productInterest === option.value
-                        ? 'border-primary-500 bg-primary-50'
-                        : 'border-gray-300 hover:border-gray-400'
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="productInterest"
-                      value={option.value}
-                      checked={formData.productInterest === option.value}
-                      onChange={handleInputChange}
-                      className="sr-only"
-                      required
-                    />
-                    <div className="flex items-center flex-1">
-                      <div className={`p-2 rounded-lg mr-4 ${
-                        formData.productInterest === option.value
-                          ? 'bg-primary-100 text-primary-600'
-                          : 'bg-gray-100 text-gray-600'
-                      }`}>
-                        <Icon size={20} />
-                      </div>
-                      <div>
-                        <div className="font-medium text-gray-900">{option.label}</div>
-                        <div className="text-sm text-gray-600">{option.description}</div>
-                      </div>
-                    </div>
-                    {formData.productInterest === option.value && (
-                      <div className="w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center">
-                        <div className="w-2 h-2 rounded-full bg-white"></div>
-                      </div>
-                    )}
-                  </label>
-                );
-              })}
-            </div>
-          </div>
+          <RadioGroup
+            label="Which product are you interested in?"
+            name="productInterest"
+            options={productOptions}
+            register={register}
+            error={errors?.productInterest?.message}
+            rules={{
+              required: 'Product interest is required'
+            }}
+            value={watch('productInterest')}
+            onChange={(value) => setValue('productInterest', value)}
+          />
 
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-              Tell us about your project
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={4}
-              value={formData.message}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-              placeholder="Describe your business needs, goals, or any specific requirements..."
-            ></textarea>
-          </div>
+          <TextArea
+            label="Tell us about your project"
+            name="notes"
+            rows={4}
+            register={register}
+            error={errors?.notes?.message}
+            placeholder="Describe your business needs, goals, or any specific requirements..."
+          />
           
           <div className="flex flex-col sm:flex-row gap-3">
             {submitStatus === 'success' && (
@@ -252,7 +190,9 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
                 ✗ Error saving request. Please try again.
               </div>
             )}
-            <Button 
+            {submitStatus !== 'success' && (
+              <>
+              <Button 
               type="submit" 
               size="lg"
               className="flex-1"
@@ -270,6 +210,8 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
             >
               Cancel
             </Button>
+              </>
+            )}
           </div>
         </form>
       </div>

@@ -1,16 +1,9 @@
 // Simple form submission utilities
 // All form data is stored locally in the browser
 
-export interface ConsultationLead {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  company: string;
-  productInterest: string;
-  message: string;
-  timestamp: string;
-}
+import axios from "axios";
+import { ConsultationLead } from "../types";
+
 
 export interface NewsletterSubscription {
   email: string;
@@ -18,15 +11,20 @@ export interface NewsletterSubscription {
 }
 
 // Save consultation form submission
-export function saveConsultationForm(formData: Omit<ConsultationLead, 'timestamp'>): void {
-  const lead: ConsultationLead = {
-    ...formData,
-    timestamp: new Date().toISOString()
-  };
-  
-  const existingLeads = getConsultationLeads();
-  existingLeads.push(lead);
-  localStorage.setItem('consultation_leads', JSON.stringify(existingLeads));
+export const saveConsultationForm = async (formData: Omit<ConsultationLead, 'timestamp'>): Promise<void> => {
+
+  return await axios.post('https://hook.us2.make.com/4hn48tei9s66vp3vprhjdi4gcfhyu6j0', {
+    first_name: formData.firstName,
+    last_name: formData.lastName,
+    email: formData.email,
+    company: formData.company,
+    phone_number: formData.phone,
+    source: window.location.href,
+    notes: formData.notes,
+    custom_attributes: {
+      product_interest: formData.productInterest
+    }
+  });
 }
 
 // Save newsletter subscription

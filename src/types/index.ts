@@ -30,3 +30,13 @@ export interface FAQ {
   question: string;
   answer: string;
 }
+
+export interface ConsultationLead {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  company: string;
+  productInterest: string;
+  notes: string;
+}
