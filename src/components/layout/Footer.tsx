@@ -37,39 +37,15 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Company Info - Takes up 2 columns on large screens */}
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div>
             <a href="/" className="flex items-center mb-6">
               <img src="/enjen-logo-white.png" alt="EnJen Digital Logo" className="h-12 w-auto" />
             </a>
-            <p className="text-gray-400 mb-6 max-w-md text-base leading-relaxed">
+            <p className="text-gray-400 mb-6 text-sm leading-relaxed">
               Transforming businesses through innovative digital solutions and strategic marketing expertise. 
-              We help companies grow their online presence and achieve measurable results.
             </p>
-            
-            {/* Contact Info */}
-            <div className="space-y-4 mb-6">
-              <div className="flex items-center">
-                <Mail className="w-5 h-5 mr-3 text-primary-500" />
-                <a href="mailto:support@enjendigital.com" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  support@enjendigital.com
-                </a>
-              </div>
-              <div className="flex items-center">
-                <Phone className="w-5 h-5 mr-3 text-primary-500" />
-                <a href="tel:+18335758448" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  (833) 575-8448
-                </a>
-              </div>
-              <div className="flex items-start">
-                <MapPin className="w-5 h-5 mr-3 text-primary-500 mt-1" />
-                <span className="text-gray-400 text-sm">
-                  2800 E. Enterprise Ave, Suite 333<br />
-                  Appleton, WI 54911
-                </span>
-              </div>
-            </div>
             
             {/* Social Links */}
             <div className="flex space-x-4">
@@ -100,7 +76,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Footer Links - Each takes 1 column */}
+          {/* Footer Links */}
           {footerLinks.map((section) => (
             <div key={section.title}>
               <h4 className="text-lg font-semibold mb-6 text-white">{section.title}</h4>
@@ -119,6 +95,33 @@ const Footer: React.FC = () => {
               </ul>
             </div>
           ))}
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-semibold mb-6 text-white">Contact</h4>
+            <div className="space-y-4">
+              <div className="flex items-center">
+                <Mail className="w-5 h-5 mr-3 text-primary-500" />
+                <a href="mailto:support@enjendigital.com" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  support@enjendigital.com
+                </a>
+              </div>
+              <div className="flex items-center">
+                <Phone className="w-5 h-5 mr-3 text-primary-500" />
+                <a href="tel:+18335758448" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  (833) 575-8448
+                </a>
+              </div>
+              <div className="flex items-start">
+                <MapPin className="w-5 h-5 mr-3 text-primary-500 mt-1" />
+                <span className="text-gray-400 text-sm">
+                  2800 E. Enterprise Ave,<br />
+                  Suite 333<br />
+                  Appleton, WI 54911
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
         
         {/* Copyright and Legal */}
