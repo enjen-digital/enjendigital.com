@@ -87,7 +87,7 @@ const BookingPage = () => {
         <StayConnectedSection />
         <PricingSection />
         <FAQSection />
-        <ContactSection />
+        <ContactSection onConsultationClick={() => setIsConsultationModalOpen(true)} />
       </main>
       <Footer />
       <ConsultationModal 
