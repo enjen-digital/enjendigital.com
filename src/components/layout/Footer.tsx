@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
             <a href="#" className="flex items-center mb-6">
               <img src="/enjen-logo-white.png" alt="EnJen Digital Logo" className="h-10 w-auto" />
@@ -66,19 +66,23 @@ const Footer: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <div className="flex space-x-4 mt-6">
-                <a href="https://www.facebook.com/enjendigital" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  <Facebook size={20} />
-                </a>
-                <a href="https://www.instagram.com/enjen_digital/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  <Instagram size={20} />
-                </a>
-                <a href="https://www.linkedin.com/company/enjen-digital" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  <Linkedin size={20} />
-                </a>
-              </div>
             </div>
           ))}
+          
+          <div>
+            <h4 className="text-base font-semibold mb-4">Follow Us</h4>
+            <div className="flex space-x-4">
+              <a href="https://www.facebook.com/enjendigital" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <Facebook size={20} />
+              </a>
+              <a href="https://www.instagram.com/enjen_digital/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="https://www.linkedin.com/company/enjen-digital" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <Linkedin size={20} />
+              </a>
+            </div>
+          </div>
         </div>
         
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
