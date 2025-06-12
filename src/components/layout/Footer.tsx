@@ -1,12 +1,8 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
-import { saveNewsletterForm } from '../../lib/forms';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const [newsletterEmail, setNewsletterEmail] = React.useState('');
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
   
   const footerLinks = [
     {
@@ -20,29 +16,10 @@ const Footer: React.FC = () => {
     }
   ];
 
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail.trim()) return;
-    
-    setIsSubmitting(true);
-
-    try {
-      saveNewsletterForm(newsletterEmail);
-      setSubmitStatus('success');
-      setNewsletterEmail('');
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    } catch (error) {
-      setSubmitStatus('error');
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-  
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1">
             <a href="#" className="flex items-center mb-6">
               <img src="/enjen-logo-white.png" alt="EnJen Digital Logo" className="h-10 w-auto" />
@@ -85,42 +62,6 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div>
-            <h4 className="text-base font-semibold mb-4">Subscribe to Our Newsletter</h4>
-            <p className="text-gray-400 mb-4 text-sm">
-              Get the latest digital marketing tips and exclusive promotions.
-            </p>
-            <form className="space-y-3" onSubmit={handleNewsletterSubmit}>
-              <input
-                type="email"
-                name="email"
-                value={newsletterEmail}
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                required
-                disabled={isSubmitting}
-              />
-              <button
-                type="submit"
-                className="w-full px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={isSubmitting || !newsletterEmail.trim()}
-              >
-                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
-              </button>
-              {submitStatus === 'success' && (
-                <p className="text-green-400 text-sm">
-                  ✓ Thank you for subscribing!
-                </p>
-              )}
-              {submitStatus === 'error' && (
-                <p className="text-red-400 text-sm">
-                  ✗ Error saving subscription. Please try again.
-                </p>
-              )}
-            </form>
-          </div>
-          
           {footerLinks.map((section) => (
             <div key={section.title}>
               <h4 className="text-base font-semibold mb-4">{section.title}</h4>
