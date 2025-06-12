@@ -121,27 +121,8 @@ const Footer: React.FC = () => {
           ))}
         </div>
         
-        {/* CTA Section */}
+        {/* Copyright and Legal */}
         <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl p-6 mb-8">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="mb-4 md:mb-0">
-                <h3 className="text-xl font-bold text-white mb-2">Ready to Get Started?</h3>
-                <p className="text-primary-100">Transform your business with our digital solutions.</p>
-              </div>
-              <button 
-                onClick={() => {
-                  const footer = document.querySelector('footer');
-                  footer?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="bg-white text-primary-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors whitespace-nowrap"
-              >
-                Get Free Consultation
-              </button>
-            </div>
-          </div>
-          
-          {/* Copyright and Legal */}
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
               © {currentYear} EnJen Digital. All rights reserved.
