@@ -27,17 +27,6 @@ const Footer: React.FC = () => {
             <p className="text-gray-400 mb-6 max-w-md text-sm">
               Transforming businesses through innovative digital solutions and strategic marketing expertise.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://www.facebook.com/enjendigital" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="https://www.instagram.com/enjen_digital/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="https://www.linkedin.com/company/enjen-digital" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <Linkedin size={20} />
-              </a>
-            </div>
           </div>
 
           <div>
@@ -77,6 +66,17 @@ const Footer: React.FC = () => {
                   </li>
                 ))}
               </ul>
+              <div className="flex space-x-4 mt-6">
+                <a href="https://www.facebook.com/enjendigital" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                  <Facebook size={20} />
+                </a>
+                <a href="https://www.instagram.com/enjen_digital/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                  <Instagram size={20} />
+                </a>
+                <a href="https://www.linkedin.com/company/enjen-digital" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                  <Linkedin size={20} />
+                </a>
+              </div>
             </div>
           ))}
         </div>
