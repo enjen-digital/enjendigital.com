@@ -286,7 +286,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <Link 
               to="/booking" 
-              className="bg-white p-4 sm:p-8 border-l-4 border-primary-600 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white p-4 sm:p-8 border-l-4 border-yellow-600 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
                 Enterprise Booking Platform
@@ -302,12 +302,12 @@ const HomePage = () => {
                   'Client Communication'
                 ].map((feature, index) => (
                   <li key={index} className="flex items-center text-gray-700 text-sm sm:text-base">
-                    <Check className="w-5 h-5 text-primary-600 mr-2" />
+                    <Check className="w-5 h-5 text-yellow-600 mr-2" />
                     {feature}
                   </li>
                 ))}
               </ul>
-              <div className="flex items-center text-primary-600 text-sm sm:text-base">
+              <div className="flex items-center text-yellow-600 text-sm sm:text-base">
                 <span className="font-medium">Learn More</span>
                 <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
               </div>
@@ -315,7 +315,7 @@ const HomePage = () => {
 
             <Link 
               to="/marketing" 
-              className="bg-white p-4 sm:p-8 border-l-4 border-primary-600 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white p-4 sm:p-8 border-l-4 border-yellow-600 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
                 Digital Marketing Solutions
@@ -331,12 +331,12 @@ const HomePage = () => {
                   'Performance Analytics'
                 ].map((feature, index) => (
                   <li key={index} className="flex items-center text-gray-700 text-sm sm:text-base">
-                    <Check className="w-5 h-5 text-primary-600 mr-2" />
+                    <Check className="w-5 h-5 text-yellow-600 mr-2" />
                     {feature}
                   </li>
                 ))}
               </ul>
-              <div className="flex items-center text-primary-600 text-sm sm:text-base">
+              <div className="flex items-center text-yellow-600 text-sm sm:text-base">
                 <span className="font-medium">Learn More</span>
                 <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
               </div>
@@ -380,7 +380,7 @@ const HomePage = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-10 sm:py-16 bg-primary-900">
+      <div className="py-10 sm:py-16 bg-black">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">
@@ -392,7 +392,7 @@ const HomePage = () => {
             <Button 
               size="lg"
               onClick={() => setIsConsultationModalOpen(true)}
-              className="bg-black text-white hover:bg-gray-800"
+              className="bg-yellow-500 text-black hover:bg-yellow-400 border-yellow-500"
             >
               Schedule a Consultation
             </Button>
