@@ -38,7 +38,7 @@ const HomeNavbar: React.FC = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
         ? 'bg-white shadow-lg py-3' 
-        : 'bg-gradient-to-r from-gray-900/80 to-primary-900/80 backdrop-blur-sm py-4'
+        : 'bg-gradient-to-r from-black/90 to-gray-900/90 backdrop-blur-sm py-4'
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
