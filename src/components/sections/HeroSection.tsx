@@ -7,9 +7,9 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
   return (
-    <section className="pt-20 sm:pt-32 pb-12 sm:pb-20 relative overflow-hidden bg-gradient-to-br from-white to-yellow-50">
+    <section className="pt-20 sm:pt-32 pb-12 sm:pb-20 relative overflow-hidden bg-gradient-to-br from-white to-primary-50">
       <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-yellow-200 to-transparent opacity-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-200 to-transparent opacity-50"></div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

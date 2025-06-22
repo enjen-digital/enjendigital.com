@@ -17,7 +17,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
         animationFillMode: 'both' 
       }}
     >
-      <div className="mb-3 sm:mb-4 text-yellow-600">
+      <div className="mb-3 sm:mb-4 text-primary-600">
         <Icon size={20} className="sm:w-6 sm:h-6" />
       </div>
       <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{title}</h3>
