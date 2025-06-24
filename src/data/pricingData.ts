@@ -32,7 +32,7 @@ export const pricingTiers = [
       'Custom Domain',
       'Sales Analytics',
     ],
-    url: 'https://buy.stripe.com/single-seat'
+    url: 'https://buy.stripe.com/3cIfZh1NOcfj4uW04MbbG08'
   },
   {
     id: 2,
@@ -50,7 +50,7 @@ export const pricingTiers = [
       'Advanced Analytics'
     ],
     highlighted: true,
-    url: 'https://buy.stripe.com/premium'
+    url: 'https://buy.stripe.com/eVq6oHdww1AF3qS5p6bbG09'
   },
   {
     id: 3,
@@ -67,7 +67,7 @@ export const pricingTiers = [
       'Custom Integration Support',
       'Priority Phone Support'
     ],
-    url: 'https://buy.stripe.com/enterprise'
+    url: 'https://buy.stripe.com/00wbJ1eAA6UZ4uW2cUbbG0a'
   }
 ];
 
