@@ -133,7 +133,7 @@ const HomePage = () => {
                 Premium Marketing & Digital Solutions
               </h1>
               <p className="text-base sm:text-xl text-gray-300 mb-3 sm:mb-4 max-w-2xl text-center lg:text-left">
-                EnJen Digital is a premier web design and digital marketing agency specializing in creating impactful online experiences and driving business growth.
+                EnJen Digital delivers comprehensive solutions for modern businesses - from advanced booking systems and custom web design to strategic digital marketing that drives measurable growth.
               </p>
               <p className="text-sm sm:text-lg text-primary-300 mb-6 sm:mb-8 text-center lg:text-left">
                 Every solution includes a comprehensive SEO package to maximize your online visibility.
