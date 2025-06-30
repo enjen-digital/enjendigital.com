@@ -321,14 +321,14 @@ const HomePage = () => {
                 Digital Marketing Solutions
               </h3>
               <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
-                Drive growth with our comprehensive digital marketing and analytics platform.
+                Complete digital solutions including web design, SEO, e-commerce, and strategic marketing campaigns.
               </p>
               <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                 {[
+                  'Web Design',
                   'SEO Optimization',
-                  'Social Media Marketing',
-                  'Content Strategy',
-                  'Performance Analytics'
+                  'E-Commerce Solutions',
+                  'Social Media & PPC Advertising'
                 ].map((feature, index) => (
                   <li key={index} className="flex items-center text-gray-700 text-sm sm:text-base">
                     <Check className="w-5 h-5 text-primary-600 mr-2" />
