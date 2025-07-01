@@ -58,7 +58,7 @@ const BookingPage = () => {
       "@type": "Organization",
       "name": "EnJen Digital",
       "url": "https://enjendigital.com",
-      "logo": "https://enjendigital.com/enjen-logo-white.png"
+      "logo": "https://enjendigital.com/enjen-logo-black.png"
     },
     "featureList": [
       "Online Booking System",
