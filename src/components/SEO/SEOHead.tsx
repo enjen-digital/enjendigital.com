@@ -50,6 +50,12 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Language" content="en-US" />
       
+      {/* Dark mode logo support */}
+      <meta name="theme-color" content="#ffffff" />
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+      <link rel="icon" href="/enjen-logo-black.png" media="(prefers-color-scheme: light)" />
+      <link rel="icon" href="/enjen-logo-white.png" media="(prefers-color-scheme: dark)" />
+      
       {/* Structured Data */}
       {structuredData && (
         <script type="application/ld+json">

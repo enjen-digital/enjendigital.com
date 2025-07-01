@@ -85,7 +85,7 @@ const HomePage = () => {
     "@type": "Organization",
     "name": "EnJen Digital",
     "url": "https://enjendigital.com",
-    "logo": "https://enjendigital.com/enjen-logo-black.png",
+    "logo": "https://enjendigital.com/enjen-logo-white.png",
     "description": "Premier web design and digital marketing agency specializing in SEO-optimized solutions, booking systems, and digital transformation.",
     "address": {
       "@type": "PostalAddress",
