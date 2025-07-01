@@ -148,7 +148,7 @@ const MarketingPage = () => {
       "@type": "Organization",
       "name": "EnJen Digital",
       "url": "https://enjendigital.com",
-      "logo": "https://enjendigital.com/enjen-logo-black.png",
+      "logo": "https://enjendigital.com/enjen-logo-white.png",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "2800 E. Enterprise Ave, Suite 333",
