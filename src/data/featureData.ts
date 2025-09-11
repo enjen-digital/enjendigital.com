@@ -1,5 +1,5 @@
 import { Feature } from '../types';
-import { Calendar, Globe, BarChart, Smartphone, Clock, Wallet, Users, MessageSquare } from 'lucide-react';
+import { Calendar, Globe, BarChart, Smartphone, Clock, Mail, Users, MessageSquare } from 'lucide-react';
 
 export const features: Feature[] = [
   {
@@ -34,9 +34,9 @@ export const features: Feature[] = [
   },
   {
     id: 6,
-    title: 'Integrated Payment System',
-    description: 'Accept deposits and payments online with secure payment processing.',
-    icon: Wallet
+    title: 'Email Marketing',
+    description: 'Create and send promotional emails to grow your customer base and increase bookings.',
+    icon: Mail
   },
   {
     id: 7,
