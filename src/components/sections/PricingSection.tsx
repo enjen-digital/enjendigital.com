@@ -1,7 +1,6 @@
 import React from 'react';
 import SectionHeading from '../ui/SectionHeading';
 import PricingCard from '../ui/PricingCard';
-import Button from '../ui/Button';
 import { pricingTiers } from '../../data/pricingData';
 import { Check } from 'lucide-react';
 
@@ -21,46 +20,6 @@ const PricingSection: React.FC = () => {
               <PricingCard tier={tier} />
             </div>
           ))}
-        </div>
-        
-        <div className="mt-16">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
-            Available Add-ons
-          </h3>
-          <div className="flex flex-col gap-4 max-w-lg mx-auto">
-            {addOns.map((addon) => (
-              <div key={addon.id} className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-                <div className="flex justify-between items-center mb-3">
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900">{addon.name}</h4>
-                    <p className="text-sm text-gray-600">{addon.description}</p>
-                  </div>
-                  <div className="text-xl font-bold text-gray-900">
-                    ${addon.price}<span className="text-sm text-gray-600">/mo</span>
-                  </div>
-                </div>
-                <ul className="space-y-2">
-                  {addon.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="text-primary-600 mr-3 mt-1">
-                        <Check size={16} />
-                      </div>
-                      <span className="text-sm text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  variant="outline"
-                  size="md"
-                  fullWidth
-                  className="mt-4"
-                  onClick={() => window.location.href = `https://buy.stripe.com/addon-${addon.name.toLowerCase().replace(' ', '-')}`}
-                >
-                  Add to Subscription
-                </Button>
-              </div>
-            ))}
-          </div>
         </div>
         
         <div className="mt-16 max-w-4xl mx-auto">
