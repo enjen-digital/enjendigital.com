@@ -2,7 +2,7 @@ import React from 'react';
 import SectionHeading from '../ui/SectionHeading';
 import PricingCard from '../ui/PricingCard';
 import Button from '../ui/Button';
-import { pricingTiers, addOns } from '../../data/pricingData';
+import { pricingTiers } from '../../data/pricingData';
 import { Check } from 'lucide-react';
 
 const PricingSection: React.FC = () => {
