@@ -16,10 +16,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
         <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12">
           <div className="w-full lg:w-1/2 animate-fade-in">
             <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 sm:mb-6 leading-tight text-center lg:text-left" aria-label="Transform Your Business with Smart Booking">
-              Transform Your Business with Smart Booking
+              Transform Your Salon with Smart Booking
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-gray-700 mb-4 sm:mb-8 max-w-lg text-center lg:text-left mx-auto lg:mx-0">
-              All-in-one booking system with integrated website designed to streamline operations and boost revenue.
+              All-in-one booking system with integrated website designed specifically for salons and spas to streamline operations and boost revenue.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">

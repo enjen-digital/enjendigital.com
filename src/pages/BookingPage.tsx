@@ -74,10 +74,10 @@ const BookingPage = () => {
   return (
     <div className="font-sans overflow-x-hidden">
       <SEOHead
-        title="Booking System for Salons & Spas | EnJen Digital Appointment Scheduling"
+        title="EnJen Digital - Professional Booking System for Salons & Spas"
         description="Transform your salon or spa with EnJen's professional booking system. Online scheduling, staff management, client communication, and analytics. Free 30-day trial."
         keywords="booking system, salon booking software, spa appointment scheduling, online booking, appointment management, salon software, spa management system, booking app"
-        canonicalUrl="https://enjendigital.com/booking"
+        canonicalUrl="https://enjendigital.com"
         structuredData={structuredData}
       />
       <Navbar onDemoClick={() => setIsConsultationModalOpen(true)} />

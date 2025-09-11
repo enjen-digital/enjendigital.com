@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
               <img src="/enjen-logo-white.png" alt="EnJen Digital Logo" className="h-10 w-auto" />
             </a>
             <p className="text-gray-400 mb-6 max-w-md text-sm">
-              Transforming businesses through innovative digital solutions and strategic marketing expertise.
+              Transforming salons and spas with our professional booking system and management tools.
             </p>
           </div>
 

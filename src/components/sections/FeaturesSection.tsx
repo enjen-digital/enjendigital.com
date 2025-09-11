@@ -9,7 +9,7 @@ const FeaturesSection: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Everything You Need to Succeed"
-          subtitle="Our booking system is packed with features designed specifically for salon, spa, and barber shop owners."
+          subtitle="Our booking system is packed with features designed specifically for salon and spa owners to grow their business."
           centered
         />
         
