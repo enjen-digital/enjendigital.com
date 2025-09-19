@@ -1,4 +1,5 @@
 import React from 'react';
+import { BarChart3, Users, UserCheck, Calendar } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import FeatureCard from '../ui/FeatureCard';
 import { features } from '../../data/featureData';
