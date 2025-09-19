@@ -89,7 +89,7 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
                 Contact Us
               </Button>
               {onDemoClick && location.pathname !== '/marketing' && (
-                <Button onClick={onDemoClick}>Request Demo</Button>
+                <Button onClick={onDemoClick}>View Demo</Button>
               )}
             </div>
           </div>
@@ -135,7 +135,7 @@ const Navbar: React.FC<NavbarProps> = ({ onDemoClick }) => {
               >
                 Contact Us
               </Button>
-              {onDemoClick && location.pathname !== '/marketing' && <Button fullWidth onClick={onDemoClick}>Request Demo</Button>}
+              {onDemoClick && location.pathname !== '/marketing' && <Button fullWidth onClick={onDemoClick}>View Demo</Button>}
             </div>
           </nav>
         </div>

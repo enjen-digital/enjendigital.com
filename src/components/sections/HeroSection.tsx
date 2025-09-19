@@ -52,7 +52,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
                 onClick={onDemoClick}
                 className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 shadow-lg shadow-primary-500/25"
               >
-                Request a Demo
+                View Demo
               </Button>
               <Button 
                 variant="outline" 
