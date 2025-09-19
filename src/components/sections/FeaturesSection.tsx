@@ -153,6 +153,13 @@ const FeaturesSection: React.FC = () => {
                       <p className="text-gray-600 text-sm">Send targeted messages to individual customers or bulk promotional campaigns to your entire base.</p>
                     </div>
                   </div>
+                  
+                  <div className="mt-8">
+                    <div className="inline-flex items-center px-4 py-2 bg-white rounded-full shadow-sm border border-gray-200">
+                      <div className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></div>
+                      <span className="text-sm font-medium text-gray-700">Real-time sync across all devices</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
