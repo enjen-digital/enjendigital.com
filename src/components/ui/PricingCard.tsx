@@ -22,12 +22,12 @@ const PricingCard: React.FC<PricingCardProps> = ({ tier }) => {
     <div className={`
       rounded-xl p-8 h-full flex flex-col
       ${highlighted 
-        ? 'bg-primary-50 border-2 border-primary-500 shadow-lg hover:shadow-[0_0_30px_rgba(147,51,234,0.2)] transition-shadow duration-300' 
-        : 'bg-white border border-gray-200 shadow-sm hover:shadow-[0_0_30px_rgba(147,51,234,0.15)] transition-shadow duration-300'}
+        ? 'bg-primary-50 border-2 border-primary-500 shadow-lg hover:shadow-[0_0_30px_rgba(147,51,234,0.2)] transition-all duration-300 transform hover:-translate-y-2' 
+        : 'bg-white border border-gray-200 shadow-sm hover:shadow-[0_0_30px_rgba(147,51,234,0.15)] transition-all duration-300 transform hover:-translate-y-2'}
     `}>
       {highlighted && (
         <div className="absolute -top-4 left-0 right-0 flex justify-center">
-          <span className="bg-accent-500 text-white text-sm font-medium px-3 py-1 rounded-full">
+          <span className="bg-accent-500 text-white text-sm font-medium px-3 py-1 rounded-full shadow-lg animate-pulse">
             Most Popular
           </span>
         </div>

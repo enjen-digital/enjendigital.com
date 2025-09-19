@@ -72,8 +72,9 @@ const TestimonialsSection: React.FC = () => {
         
         <div className="mt-16 bg-primary-800 rounded-2xl overflow-hidden">
           <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/2 p-8 md:p-12 flex items-center">
-              <div>
+            <div className="md:w-1/2 p-8 md:p-12 flex items-center relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-700/50 to-accent-600/30"></div>
+              <div className="relative z-10">
                 <h3 className="text-3xl font-bold text-white mb-4">
                   Ready to Grow Your Business?
                 </h3>
@@ -82,7 +83,7 @@ const TestimonialsSection: React.FC = () => {
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <button 
-                    className="bg-white text-primary-800 hover:bg-primary-50 px-6 py-3 rounded-md font-medium transition-colors"
+                    className="bg-white text-primary-800 hover:bg-primary-50 px-6 py-3 rounded-md font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                     onClick={() => {
                       const pricingSection = document.getElementById('pricing');
                       pricingSection?.scrollIntoView({ behavior: 'smooth' });
@@ -91,7 +92,7 @@ const TestimonialsSection: React.FC = () => {
                     Get Started
                   </button>
                   <button 
-                    className="bg-transparent text-white border border-white hover:bg-primary-700 px-6 py-3 rounded-md font-medium transition-colors"
+                    className="bg-transparent text-white border border-white hover:bg-primary-700 px-6 py-3 rounded-md font-medium transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1"
                     onClick={() => window.openDemoModal?.()}
                   >
                     See Demo

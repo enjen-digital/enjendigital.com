@@ -39,7 +39,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
                 { icon: Users, label: 'Team Management' },
                 { icon: Calendar, label: 'Smart Scheduling' }
               ].map((feature, index) => (
-                <div key={index} className="flex items-center px-3 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                <div key={index} className="flex items-center px-3 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer">
                   <feature.icon className="w-4 h-4 mr-2 text-primary-400" />
                   <span className="text-sm font-medium">{feature.label}</span>
                 </div>

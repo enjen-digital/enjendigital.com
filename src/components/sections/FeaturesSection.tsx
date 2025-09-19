@@ -22,9 +22,10 @@ const FeaturesSection: React.FC = () => {
         
         {/* Dashboard Feature Highlight */}
         <div className="mb-16">
-          <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative">
+          <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative group hover:shadow-2xl transition-all duration-500">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-accent-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
               <div>
@@ -46,7 +47,7 @@ const FeaturesSection: React.FC = () => {
                     { label: 'Appointment Volume', value: 'Booking analytics' },
                     { label: 'Service Distribution', value: 'Performance insights' }
                   ].map((metric, index) => (
-                    <div key={index} className="bg-white/10 rounded-lg p-4">
+                    <div key={index} className="bg-white/10 rounded-lg p-4 hover:bg-white/20 transition-all duration-300 cursor-pointer transform hover:scale-105">
                       <div className="text-white font-semibold text-sm">{metric.label}</div>
                       <div className="text-primary-200 text-xs mt-1">{metric.value}</div>
                     </div>
@@ -55,11 +56,11 @@ const FeaturesSection: React.FC = () => {
               </div>
               
               <div className="relative">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-white/40 transition-all duration-300">
                   <img 
                     src="/Screenshot Analytic.png" 
                     alt="Analytics Dashboard Interface"
-                    className="w-full rounded-xl shadow-2xl"
+                    className="w-full rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300"
                   />
                 </div>
               </div>
