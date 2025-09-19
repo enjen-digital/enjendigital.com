@@ -21,40 +21,6 @@ const PricingSection: React.FC = () => {
             </div>
           ))}
         </div>
-        
-        <div className="mt-16 max-w-4xl mx-auto">
-          <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
-            <h3 className="text-xl font-semibold text-gray-900 mb-6 text-center">
-              All Plans Include
-            </h3>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                'Free Setup & Onboarding',
-                'Unlimited Bookings',
-                'Unlimited Clients',
-                'SSL Security',
-                'Mobile App',
-                'Email Reminders',
-                'Custom Domain',
-                'Site Customization',
-                'Front Desk Tablet',
-                '24/7 Self-Service Booking',
-                'Automated Scheduling',
-                'Regular Updates'
-              ].map((feature, index) => (
-                <div key={index} className="flex items-center">
-                  <div className="text-primary-600 mr-2">
-                    <Check size={18} />
-                  </div>
-                  <span className={`text-gray-700 ${feature === 'Front Desk Tablet' ? 'feature-highlight' : ''}`}>
-                    {feature}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
