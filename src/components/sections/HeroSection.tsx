@@ -1,5 +1,5 @@
 import Button from '../ui/Button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BarChart3, Users, Calendar, TrendingUp } from 'lucide-react';
 
 interface HeroSectionProps {
   onDemoClick: () => void;
@@ -7,127 +7,140 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onDemoClick }) => {
   return (
-    <section className="pt-20 sm:pt-32 pb-12 sm:pb-20 relative overflow-hidden bg-gradient-to-br from-white to-primary-50">
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-200 to-transparent opacity-50"></div>
+    <section className="pt-20 sm:pt-32 pb-12 sm:pb-20 relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-primary-900">
+      {/* Background Elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary-500/10 to-transparent rounded-full"></div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12">
-          <div className="w-full lg:w-1/2 animate-fade-in">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 sm:mb-6 leading-tight text-center lg:text-left" aria-label="Transform Your Business with Smart Booking">
-              Transform Your Salon with Smart Booking
+          <div className="w-full lg:w-1/2 animate-fade-in text-white">
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6 border border-white/20">
+              <TrendingUp className="w-4 h-4 mr-2 text-primary-400" />
+              Complete Business Management Platform
+            </div>
+            
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-center lg:text-left" aria-label="Transform Your Business Operations">
+              Transform Your Business with 
+              <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent"> Smart Analytics</span>
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-700 mb-4 sm:mb-8 max-w-lg text-center lg:text-left mx-auto lg:mx-0">
-              All-in-one booking system with integrated website designed specifically for salons and spas to streamline operations and boost revenue.
+            
+            <p className="text-lg lg:text-xl text-gray-300 mb-8 max-w-lg text-center lg:text-left mx-auto lg:mx-0">
+              Comprehensive booking system with powerful analytics, team management, and customer insights designed for modern salons and spas.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Button size="lg" onClick={onDemoClick}>
+            {/* Feature Pills */}
+            <div className="flex flex-wrap gap-3 mb-8 justify-center lg:justify-start">
+              {[
+                { icon: BarChart3, label: 'Analytics Dashboard' },
+                { icon: Users, label: 'Team Management' },
+                { icon: Calendar, label: 'Smart Scheduling' }
+              ].map((feature, index) => (
+                <div key={index} className="flex items-center px-3 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                  <feature.icon className="w-4 h-4 mr-2 text-primary-400" />
+                  <span className="text-sm font-medium">{feature.label}</span>
+                </div>
+              ))}
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
+              <Button 
+                size="lg" 
+                onClick={onDemoClick}
+                className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 shadow-lg shadow-primary-500/25"
+              >
                 Request a Demo
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="group"
+                className="group border-white/30 text-white hover:bg-white hover:text-gray-900"
                 onClick={() => {
                   const featuresSection = document.getElementById('features');
                   featuresSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                <span>See Features</span>
+                <span>Explore Features</span>
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
               </Button>
             </div>
             
-            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-0">
-              <div className="text-gray-700 text-center sm:text-left whitespace-nowrap mb-3 sm:hidden text-sm">
-                <span className="font-bold">40+</span> salons & spas trust us
-              </div>
-              <div className="flex -space-x-1 sm:-space-x-2 mr-0 sm:mr-4">
+            {/* Trust Indicators */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              <div className="flex -space-x-2">
                 {[
-                  {
-                    name: ['J.', '✧'],
-                    bg: 'bg-black',
-                    text: 'text-white',
-                    extraClasses: 'leading-[0.75] py-0.5'
-                  },
+                  { name: ['J.', '✧'], bg: 'bg-white', text: 'text-gray-900' },
                   { name: 'Hairapy', bg: 'bg-primary-600', text: 'text-white' },
-                  { 
-                    name: ['King', 'Kutz'],
-                    bg: 'bg-accent-500',
-                    text: 'text-white',
-                    extraClasses: 'leading-[0.9]'
-                  },
-                  { 
-                    name: ['Day', 'Spa'],
-                    bg: 'bg-gray-900',
-                    text: 'text-white',
-                    extraClasses: 'leading-[0.9]'
-                  }
-                ].map((image, i) => (
-                  <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden shadow-md">
-                    <div className={`w-full h-full flex items-center justify-center ${image.bg} ${image.text} text-[8px] font-bold ${image.extraClasses || ''}`}>
-                      {Array.isArray(image.name) ? (
+                  { name: ['King', 'Kutz'], bg: 'bg-accent-500', text: 'text-white' },
+                  { name: ['Day', 'Spa'], bg: 'bg-gray-700', text: 'text-white' }
+                ].map((client, i) => (
+                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white/20 overflow-hidden shadow-lg">
+                    <div className={`w-full h-full flex items-center justify-center ${client.bg} ${client.text} text-xs font-bold`}>
+                      {Array.isArray(client.name) ? (
                         <div className="flex flex-col items-center leading-none">
-                          <span className="text-[6px] sm:text-[8px]">{image.name[0]}</span>
-                          <span className="text-[8px] sm:text-[10px]">{image.name[1]}</span>
+                          <span className="text-[8px]">{client.name[0]}</span>
+                          <span className="text-[10px]">{client.name[1]}</span>
                         </div>
                       ) : (
-                        <span className="text-[6px] sm:text-[8px]">{image.name}</span>
+                        <span className="text-[8px]">{client.name}</span>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="text-gray-700 text-center sm:text-left whitespace-nowrap hidden sm:block text-sm">
-                <span className="font-bold">40+</span> salons & spas trust us
+              <div className="text-gray-300 text-center sm:text-left">
+                <div className="font-semibold">40+ businesses trust us</div>
+                <div className="text-sm text-gray-400">Join successful salon owners</div>
               </div>
             </div>
           </div>
           
-          <div className="w-full lg:w-1/2 animate-slide-in-right px-2 sm:px-0 mt-6 lg:mt-0">
+          <div className="w-full lg:w-1/2 animate-slide-in-right mt-6 lg:mt-0">
             <div className="relative">
-              <div className="bg-white rounded-xl shadow-2xl overflow-hidden group">
-                <img
-                  src="/booking slide.png"
-                  alt="Booking System Interface"
-                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105 lg:group-hover:scale-110 lg:group-hover:translate-y-[-25%]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-base sm:text-lg font-semibold mb-2">Smart Booking System</h3>
-                    <p className="text-xs sm:text-sm opacity-90">Streamline your appointments with our intuitive booking interface</p>
-                  </div>
+              {/* Main Dashboard Preview */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-2xl">
+                <div className="bg-white rounded-xl overflow-hidden shadow-xl">
+                  <img
+                    src="/Screenshot Analytic.png"
+                    alt="Business Analytics Dashboard"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               
-              <div className="absolute -bottom-8 sm:-bottom-16 left-0 bg-white rounded-lg shadow-lg p-2 sm:p-4 w-28 sm:w-48 transform sm:-translate-x-6">
+              {/* Floating Stats Cards */}
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 w-48 border border-gray-100">
                 <div className="flex items-center justify-between mb-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                  <div className="text-[10px] sm:text-sm font-semibold text-gray-900">Today</div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <div className="text-sm font-semibold text-gray-900">Revenue Growth</div>
                 </div>
-                <div className="text-gray-700 font-medium text-xs sm:text-base">+12 Bookings</div>
-                <div className="text-green-600 text-[10px] sm:text-sm">↑ 18% from last week</div>
+                <div className="text-gray-900 font-bold text-lg">+24%</div>
+                <div className="text-green-600 text-sm">↑ This month</div>
               </div>
               
-              <div className="absolute -top-8 sm:-top-16 right-0 bg-white rounded-lg shadow-lg p-2 sm:p-4 w-28 sm:w-48 transform sm:translate-x-6">
+              <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-xl p-4 w-48 border border-gray-100">
                 <div className="flex items-center justify-between mb-2">
-                  <div className="w-2 h-2 rounded-full bg-accent-500"></div>
-                  <div className="text-[10px] sm:text-sm font-semibold text-gray-900">Analytics</div>
+                  <div className="w-3 h-3 rounded-full bg-primary-500"></div>
+                  <div className="text-sm font-semibold text-gray-900">Active Customers</div>
                 </div>
-                <div className="text-gray-700 font-medium text-xs sm:text-base">$2,540</div>
-                <div className="text-accent-600 text-[10px] sm:text-sm">↑ 24% from last month</div>
+                <div className="text-gray-900 font-bold text-lg">1,247</div>
+                <div className="text-primary-600 text-sm">↑ 18% growth</div>
+              </div>
+              
+              <div className="absolute top-1/2 -right-8 bg-white rounded-xl shadow-xl p-4 w-44 border border-gray-100 transform -translate-y-1/2">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-3 h-3 rounded-full bg-accent-500"></div>
+                  <div className="text-sm font-semibold text-gray-900">Appointments</div>
+                </div>
+                <div className="text-gray-900 font-bold text-lg">156</div>
+                <div className="text-accent-600 text-sm">This week</div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      {/* Wave SVG */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 120L60 105C120 90 240 60 360 50C480 40 600 50 720 55C840 60 960 60 1080 65C1200 70 1320 80 1380 85L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-        </svg>
       </div>
     </section>
   );
